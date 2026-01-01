@@ -130,5 +130,23 @@
             <p class="copyright">&copy; 2023 Creative UI Designer. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // В реальном проекте здесь будет отправка на сервер
+            // Для демо просто покажем сообщение
+            alert(`Thank you, ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
+            
+            // Очищаем форму
+            this.reset();
+        });
+    </script>
 </body>
 </html>
