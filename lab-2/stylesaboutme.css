@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+a {
+    color: #eee;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1440px;
+    
+    
+    
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-image: url('About\ Me\ Page.png'); /* Путь к картинке */
+    background-size: cover; /* Растягивает картинку на весь экран */
+    background-position: center; /* Центрирует изображение */
+    background-repeat: no-repeat; /* Запрещает повторение */
+    height: 100vh; /* Высота на весь экран */
+    margin: 0;
+    margin: 0;
+    font-family: 'Poppins';
+    background-color: #222831;
+    color: #eee;
+}
+
+.header {
+    margin-top: 48px;
+    margin-right: 96px;
+    margin-bottom: 48px;
+}
+
+.line {
+    margin-top: 57px;
+}
+
+.header_list{
+    display: flex;
+    justify-content: flex-end;
+    gap: 48px;
+}
+
+.main {
+    margin-top: 202px;
+    margin-left: 180px;
+    
+}
+
+.ui_des {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.designer {
+    font-size: 80px;
+    color: #00ADB5;
+    font-weight: bold;
+}
+
+.hire {
+    background-color: #00ADB5;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 35px;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 32px;
+}
+
+.cv {
+    background-color: #393E46;
+    border: none;
+    color: white;
+    text-align: center;
+    margin-left: 24px;
+    text-decoration: none;
+    padding: 15px 35px;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 32px;
+    
+}
+
+
+.guy {
+    margin-left: 100px;
+}
+
+
+
+.footer_listul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 250px;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 38px;
+    margin-bottom: 100px;
+}
+
+p {
+    display: flex;
+   
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 200px; 
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+
+
+.h1 {
+    font-size: 64px;
+    font-family: 'Poppins';
+}
