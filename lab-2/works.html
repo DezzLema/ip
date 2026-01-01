@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Pure CSS</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/works.css">
 </head>
 <body>
-    <!-- Pure CSS Gallery - No JavaScript -->
+    <header class="header">
+        <div class="container">
+            <nav class="header_nav">
+                <ul class="header_list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutme.html">About Me</a></li>
+                    <li><a href="works.html">My works</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <img src="img/Line 2.png" alt="Divider line" class="line">
+        </div>
+    </header>
+
     <div class="pure-css-gallery">
-        <!-- Radio buttons for slide selection -->
         <input type="radio" name="gallery" id="slide-1" class="gallery-radio" checked>
         <input type="radio" name="gallery" id="slide-2" class="gallery-radio">
-        <!-- Add more: <input type="radio" name="gallery" id="slide-3"> -->
         
-        <!-- Slides Container -->
         <div class="slides-container">
-            <!-- Slide 1 -->
             <div class="gallery-slide slide-1">
                 <div class="puzzle-animation">
-                    <!-- 9 puzzle pieces -->
                     <div class="puzzle-piece p1"></div>
                     <div class="puzzle-piece p2"></div>
                     <div class="puzzle-piece p3"></div>
@@ -32,10 +42,8 @@
                 </div>
             </div>
             
-            <!-- Slide 2 -->
             <div class="gallery-slide slide-2">
                 <div class="puzzle-animation">
-                    <!-- 9 puzzle pieces -->
                     <div class="puzzle-piece p1"></div>
                     <div class="puzzle-piece p2"></div>
                     <div class="puzzle-piece p3"></div>
@@ -47,30 +55,52 @@
                     <div class="puzzle-piece p9"></div>
                 </div>
             </div>
-            
-            <!-- Add more slides here -->
         </div>
         
-        <!-- Navigation Controls -->
         <div class="gallery-controls">
-            <!-- Previous Button -->
             <div class="nav-buttons">
-                <label for="slide-1" class="nav-btn prev">
-                    ‹
-                </label>
+                <label for="slide-2" class="nav-btn prev">‹</label>
                 
-                <!-- Navigation Dots -->
                 <div class="nav-dots">
                     <label for="slide-1" class="nav-dot dot-1 active">●</label>
                     <label for="slide-2" class="nav-dot dot-2">●</label>
-                    <!-- Add more: <label for="slide-3" class="nav-dot dot-3">●</label> -->
                 </div>
-                <!-- Next Button -->
-                <label for="slide-2" class="nav-btn next">
-                    ›
-                </label>
+                
+                <label for="slide-1" class="nav-btn next">›</label>
             </div>
         </div>
     </div>
+
+    <div class="divider">
+        <img src="img/Line 2.png" alt="Divider line" class="line">
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <ul class="footer_list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutme.html">About me</a></li>
+                    <li><a href="works.html">My works</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#" aria-label="Facebook" class="social-link">
+                    <img src="img/facebook.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="#" aria-label="Instagram" class="social-link">
+                    <img src="img/instagram.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="#" aria-label="Twitter" class="social-link">
+                    <img src="img/twitter.png" alt="Twitter" class="social-icon">
+                </a>
+                <a href="#" aria-label="YouTube" class="social-link">
+                    <img src="img/youtube.png" alt="YouTube" class="social-icon">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2023 Creative UI Designer. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

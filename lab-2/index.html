@@ -13,9 +13,10 @@
         <div class="container">
             <nav class="header_nav">
                 <ul class="header_list">
-                    <li><a href="index.html">Home</a></li> <!-- Исправлено -->
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="aboutme.html">About Me</a></li>
-                    <li><a href="contact.html">Contact</a></li> <!-- Исправлено -->
+                    <li><a href="works.html">My works</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <img src="img/Line 2.png" alt="Divider line" class="line">
@@ -28,8 +29,9 @@
                 <h1 class="ui_des">CREATIVE UI</h1>
                 <h1 class="designer">DESIGNER</h1>
                 <div class="buttons">
-                    <button class="hire" onclick="window.location.href='contact.html'">Hire me</button> <!-- Добавлен переход -->
-                    <button class="cv" onclick="downloadCV()">Download CV</button> <!-- Добавлена функция -->
+                    <button class="hire" onclick="window.location.href='contact.html'">Hire me</button>
+                    <button class="cv" onclick="downloadCV()">Download CV</button>
+                    <button class="works" onclick="window.location.href='works.html'">View My Works</button>
                 </div>
             </div>
             <div class="image-container">
@@ -48,6 +50,7 @@
                 <ul class="footer_list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="aboutme.html">About me</a></li>
+                    <li><a href="works.html">My works</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -70,14 +73,9 @@
     </footer>
 
     <script>
-        // Функция для кнопки Download CV
         function downloadCV() {
-            // В реальном проекте здесь будет ссылка на PDF файл
-            alert('CV download will start shortly. In a real project, this would download a PDF file.');
-            // window.location.href = 'files/cv.pdf'; // Раскомментировать для реального файла
+            alert('CV download will start shortly.');
         }
-        
-        // Функция для кнопки Hire me уже через onclick
     </script>
 </body>
 </html>
