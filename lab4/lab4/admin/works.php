@@ -372,6 +372,56 @@ ob_start();
     </script>
 
     <?php include '../includes/footer.php'; ?>
+    <?php if (!empty($works)): ?>
+        <script>
+            // JavaScript для динамической навигации
+            document.addEventListener('DOMContentLoaded', function() {
+                const totalSlides = <?php echo count($works); ?>;
+
+                if (totalSlides > 1) {
+                    // Обновляем навигационные кнопки
+                    const prevBtn = document.querySelector('.nav-btn.prev');
+                    const nextBtn = document.querySelector('.nav-btn.next');
+
+                    if (prevBtn && nextBtn) {
+                        // Функция для получения текущего слайда
+                        function getCurrentSlide() {
+                            const radios = document.querySelectorAll('.gallery-radio');
+                            for (let i = 0; i < radios.length; i++) {
+                                if (radios[i].checked) {
+                                    return i + 1;
+                                }
+                            }
+                            return 1;
+                        }
+
+                        // Функция для обновления кнопок
+                        function updateNavigation() {
+                            const current = getCurrentSlide();
+
+                            // Обновляем предыдущую кнопку
+                            const prevSlide = current === 1 ? totalSlides : current - 1;
+                            prevBtn.setAttribute('for', 'slide-' + prevSlide);
+                            prevBtn.style.display = 'flex';
+
+                            // Обновляем следующую кнопку
+                            const nextSlide = current === totalSlides ? 1 : current + 1;
+                            nextBtn.setAttribute('for', 'slide-' + nextSlide);
+                            nextBtn.style.display = 'flex';
+                        }
+
+                        // Слушаем изменения радио-кнопок
+                        document.querySelectorAll('.gallery-radio').forEach(radio => {
+                            radio.addEventListener('change', updateNavigation);
+                        });
+
+                        // Инициализируем навигацию
+                        updateNavigation();
+                    }
+                }
+            });
+        </script>
+    <?php endif; ?>
     </body>
     </html>
 <?php
