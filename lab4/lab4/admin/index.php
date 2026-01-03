@@ -538,7 +538,7 @@ ob_start();
                     <?php endif; ?>
                 </div>
             </div>
-            
+
 
             <!-- Быстрая статистика -->
             <div class="quick-stats">

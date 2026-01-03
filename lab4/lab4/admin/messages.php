@@ -48,14 +48,20 @@ if ($filter === 'read') {
 $where_clause = $where_conditions ? "WHERE " . implode(" AND ", $where_conditions) : "";
 
 // Получаем сообщения
-$messages = $db->fetchAll("
+$limit = (int)$per_page;
+$offset_value = (int)$offset;
+
+// Для LIMIT и OFFSET не используем параметры, так как они должны быть числами
+$query = "
     SELECT m.*, u.username 
     FROM messages m 
     LEFT JOIN users u ON m.user_id = u.id 
     $where_clause
     ORDER BY m.created_at DESC 
-    LIMIT ? OFFSET ?
-", array_merge($params, [$per_page, $offset]));
+    LIMIT $limit OFFSET $offset_value
+";
+
+$messages = $db->fetchAll($query, $params);
 
 // Получаем общее количество для пагинации
 $total_count = $db->fetch("
