@@ -16,8 +16,25 @@ define('COPYRIGHT_YEAR', date('Y'));
 define('CSS_PATH', 'styles/');
 define('IMG_PATH', 'img/');
 
+// Роли пользователей
+define('ROLE_USER', 'user');
+define('ROLE_ADMIN', 'admin');
+
 // Статус пользователя
 session_start();
+
+// Проверка ролей
+function isAdmin() {
+    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === ROLE_ADMIN;
+}
+
+function requireAdmin() {
+    if (!isAdmin()) {
+        header('Location: /');
+        exit;
+    }
+}
+
 
 // Подключение к БД
 function getDBConnection() {
