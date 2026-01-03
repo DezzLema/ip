@@ -1,0 +1,366 @@
+/* ========== PURE CSS GALLERY ========== */
+/* No JavaScript Required */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Gallery Container */
+.pure-css-gallery {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Hide radio buttons */
+.gallery-radio {
+    display: none;
+}
+
+/* Slides Container */
+.slides-container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    background: #000;
+    margin-bottom: 30px;
+}
+
+/* Gallery Slides */
+.gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.6s ease;
+}
+
+/* Show active slide based on radio button */
+#slide-1:checked ~ .slides-container .slide-1,
+#slide-2:checked ~ .slides-container .slide-2 {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Add for more slides:
+#slide-3:checked ~ .slides-container .slide-3 { ... }
+*/
+
+/* Puzzle Animation Grid */
+.puzzle-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+}
+
+/* Puzzle Pieces (9 pieces) */
+.puzzle-piece {
+    background-size: 300% 300%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: center;
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Set different images for each slide */
+.slide-1 .puzzle-piece { background-image: url('../img/gal1.jpeg'); }
+.slide-2 .puzzle-piece { background-image: url('img/gal2.jpeg'); }
+/* Add: .slide-3 .puzzle-piece { background-image: url('img/gal3.jpeg'); } */
+
+/* Position each puzzle piece correctly */
+.puzzle-piece.p1 { background-position: 0% 0%; }
+.puzzle-piece.p2 { background-position: 50% 0%; }
+.puzzle-piece.p3 { background-position: 100% 0%; }
+.puzzle-piece.p4 { background-position: 0% 50%; }
+.puzzle-piece.p5 { background-position: 50% 50%; }
+.puzzle-piece.p6 { background-position: 100% 50%; }
+.puzzle-piece.p7 { background-position: 0% 100%; }
+.puzzle-piece.p8 { background-position: 50% 100%; }
+.puzzle-piece.p9 { background-position: 100% 100%; }
+
+/* Gallery Controls */
+.gallery-controls {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 173, 181, 0.2);
+    color: #00ADB5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 173, 181, 0.3);
+}
+
+.nav-btn:hover {
+    background: #00ADB5;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Navigation Dots */
+.nav-dots {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0;
+    color: transparent;
+    position: relative;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.2);
+}
+
+/* Active dot based on radio button */
+#slide-1:checked ~ .gallery-controls .dot-1,
+#slide-2:checked ~ .gallery-controls .dot-2 {
+    background: #00ADB5;
+    transform: scale(1.3);
+    box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.2);
+}
+
+/* Add for more dots:
+#slide-3:checked ~ .gallery-controls .dot-3 { ... }
+*/
+
+/* Add More Images Section */
+.add-more {
+    padding: 20px;
+    background: rgba(0, 173, 181, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #00ADB5;
+}
+
+.add-instruction h3 {
+    color: #00ADB5;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.add-instruction ol {
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.add-instruction li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.add-instruction code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #00ADB5;
+}
+
+/* ========== PUZZLE ANIMATION ========== */
+
+@keyframes puzzleAssemble {
+    0% {
+        transform: scale(0.5) rotate(45deg);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    50% {
+        transform: scale(1.1) rotate(-10deg);
+        opacity: 0.7;
+        filter: blur(5px);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Apply animation when slide is active */
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece {
+    animation: puzzleAssemble 0.8s ease-out forwards;
+}
+
+/* Different delays for each piece */
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p1,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p1 {
+    animation-delay: 0.05s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p2,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p2 {
+    animation-delay: 0.1s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p3,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p3 {
+    animation-delay: 0.15s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p4,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p4 {
+    animation-delay: 0.2s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p5,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p5 {
+    animation-delay: 0.25s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p6,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p6 {
+    animation-delay: 0.3s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p7,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p7 {
+    animation-delay: 0.35s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p8,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p8 {
+    animation-delay: 0.4s;
+}
+
+#slide-1:checked ~ .slides-container .slide-1 .puzzle-piece.p9,
+#slide-2:checked ~ .slides-container .slide-2 .puzzle-piece.p9 {
+    animation-delay: 0.45s;
+}
+
+/* Pulse animation for active dot */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 173, 181, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(0, 173, 181, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 173, 181, 0);
+    }
+}
+
+#slide-1:checked ~ .gallery-controls .dot-1,
+#slide-2:checked ~ .gallery-controls .dot-2 {
+    animation: pulse 2s infinite;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 768px) {
+    .slides-container {
+        height: 400px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-btn {
+        order: 2;
+    }
+    
+    .nav-dots {
+        order: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .slides-container {
+        height: 300px;
+    }
+    
+    .add-instruction h3 {
+        font-size: 16px;
+    }
+    
+    .add-instruction li {
+        font-size: 12px;
+    }
+}
+
+/* Accessibility */
+.gallery-radio:focus + label,
+.nav-btn:focus,
+.nav-dot:focus {
+    outline: 2px solid #00ADB5;
+    outline-offset: 2px;
+}
+
+/* Fade in animation */
+.pure-css-gallery {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
