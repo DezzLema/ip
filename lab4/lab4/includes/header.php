@@ -41,6 +41,9 @@ $is_admin_section = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
                     <a href="<?php echo $is_admin_section ? '../works.php' : 'works.php'; ?>"
                             <?php echo ($current_page == 'works') ? 'class="active"' : ''; ?>>
                         My works
+                        <?php if (!isset($_SESSION['user_id'])): ?>
+                            <span style="color: #ff6b6b; font-size: 12px; margin-left: 5px;">🔒</span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li>

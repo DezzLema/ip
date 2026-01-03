@@ -4,6 +4,14 @@ require_once 'includes/db_connection.php';
 
 $db = Database::getInstance();
 
+// ПРОВЕРКА АВТОРИЗАЦИИ
+if (!isset($_SESSION['user_id'])) {
+    // Если пользователь не авторизован, перенаправляем на страницу логина
+    $_SESSION['redirect_url'] = 'works.php';
+    header('Location: login.php?message=Please login to view the gallery');
+    exit;
+}
+
 // Получаем все опубликованные работы из базы данных
 $works = $db->fetchAll("
     SELECT * FROM works 
@@ -18,6 +26,14 @@ ob_start();
 ?>
 
     <div class="pure-css-gallery" id="gallery-container">
+        <!-- Сообщение для авторизованного пользователя -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <p style="color: #00ADB5; font-size: 16px;">
+                Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!
+                You're viewing exclusive content.
+            </p>
+        </div>
+
         <?php if (empty($works)): ?>
             <div style="text-align: center; padding: 100px 20px;">
                 <div style="font-size: 80px; margin-bottom: 20px; color: #00ADB5; opacity: 0.5;">🎨</div>
@@ -53,6 +69,12 @@ ob_start();
                             <?php if (!empty($work['category'])): ?>
                                 <span class="work-category"><?php echo htmlspecialchars($work['category']); ?></span>
                             <?php endif; ?>
+                            <?php if (isAdmin()): ?>
+                                <div style="margin-top: 10px; font-size: 12px; color: #aaa;">
+                                    Work ID: <?php echo $work['id']; ?> |
+                                    Created: <?php echo date('d.m.Y', strtotime($work['created_at'])); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -81,6 +103,13 @@ ob_start();
                     <?php if ($total_slides > 1): ?>
                         <button class="nav-btn next" onclick="nextSlide()">›</button>
                     <?php endif; ?>
+                </div>
+
+                <!-- Информация для пользователя -->
+                <div style="text-align: center; margin-top: 20px; padding: 10px; background: rgba(0,173,181,0.1); border-radius: 8px;">
+                    <p style="color: #00ADB5; font-size: 14px; margin: 0;">
+                        🔒 Exclusive content for registered users
+                    </p>
                 </div>
             </div>
         <?php endif; ?>
@@ -181,6 +210,15 @@ $custom_css = '
     /* Для одного слайда центрируем точки */
     .nav-buttons.single-slide {
         justify-content: center !important;
+    }
+    
+    /* Стиль для защищенного контента */
+    .protected-content {
+        background: linear-gradient(135deg, rgba(0,173,181,0.1) 0%, rgba(34,40,49,0.8) 100%);
+        border: 2px solid #00ADB5;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 30px;
     }
 </style>';
 
@@ -292,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Функция для перезапуска анимации при клике на текущий слайд
 document.querySelectorAll(".nav-dot").forEach(dot => {
     dot.addEventListener("click", function() {
-        const slideNum = parseInt(this.className.match(/dot-(\d+)/)[1]);
+        const slideNum = parseInt(this.className.match(/dot-(\\d+)/)[1]);
         if (slideNum === currentSlide) {
             restartPuzzleAnimation();
         }

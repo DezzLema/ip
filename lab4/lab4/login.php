@@ -4,23 +4,18 @@ require_once 'includes/db_connection.php';
 
 $page = 'login';
 $page_title = 'Login';
-$errors = [];
+$error = '';
+
+// Проверяем, есть ли сообщение о необходимости логина
+$message = $_GET['message'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // СЕРВЕРНАЯ ВАЛИДАЦИЯ
-    if (empty($username)) {
-        $errors['username'] = 'Username or email is required';
-    }
-
-    if (empty($password)) {
-        $errors['password'] = 'Password is required';
-    }
-
-    // Если нет ошибок валидации
-    if (empty($errors)) {
+    if (empty($username) || empty($password)) {
+        $error = 'Please fill in all fields';
+    } else {
         $db = Database::getInstance();
 
         // Ищем пользователя
@@ -36,15 +31,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['user_role'] = $user['role'];
 
-            // Редирект в админку если админ
-            if ($user['role'] === 'admin') {
-                header('Location: admin/index.php');
+            // Проверяем, есть ли URL для редиректа
+            if (isset($_SESSION['redirect_url'])) {
+                $redirect_url = $_SESSION['redirect_url'];
+                unset($_SESSION['redirect_url']);
+                header('Location: ' . $redirect_url);
             } else {
-                header('Location: index.php');
+                // Редирект в админку если админ
+                if ($user['role'] === 'admin') {
+                    header('Location: admin/index.php');
+                } else {
+                    header('Location: index.php');
+                }
             }
             exit;
         } else {
-            $errors['general'] = 'Invalid username/email or password';
+            $error = 'Invalid username/email or password';
         }
     }
 }
@@ -56,9 +58,15 @@ ob_start();
             <div class="contact-content">
                 <h1 class="contact-title">Login</h1>
 
-                <?php if (isset($errors['general'])): ?>
+                <?php if ($message): ?>
+                    <div class="info-message" style="background-color: rgba(0,173,181,0.1); color: #00ADB5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <?php echo htmlspecialchars($message); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($error): ?>
                     <div class="error-message">
-                        <?php echo htmlspecialchars($errors['general']); ?>
+                        <?php echo htmlspecialchars($error); ?>
                     </div>
                 <?php endif; ?>
 
