@@ -1,24 +1,31 @@
 <?php
 require_once 'includes/config.php';
-$page = 'contact';
-$page_title = 'Contact Me';
+require_once 'includes/db_connection.php';
 
-// Обработка формы (упрощенный пример)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = htmlspecialchars($_POST['name'] ?? '');
     $email = htmlspecialchars($_POST['email'] ?? '');
     $message = htmlspecialchars($_POST['message'] ?? '');
 
-    // Здесь можно добавить отправку на email или сохранение в БД
-    $success_message = "Thank you, $name! Your message has been sent.";
+    // Сохраняем в БД
+    $db = Database::getInstance();
+    $db->query(
+            "INSERT INTO messages (user_id, name, email, message, ip_address, user_agent) 
+         VALUES (?, ?, ?, ?, ?, ?)",
+            [
+                    $_SESSION['user_id'] ?? null,
+                    $name,
+                    $email,
+                    $message,
+                    $_SERVER['REMOTE_ADDR'],
+                    $_SERVER['HTTP_USER_AGENT']
+            ]
+    );
 
-    // Для демо просто покажем сообщение
-    $_SESSION['contact_message'] = $success_message;
+    $_SESSION['contact_message'] = "Thank you, $name! Your message has been sent.";
     header('Location: contact.php?success=1');
     exit;
 }
-
-ob_start();
 ?>
 
     <main class="main contact-main">
