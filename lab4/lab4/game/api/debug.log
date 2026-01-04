@@ -1,0 +1,8 @@
+2026-01-04 07:29:43 - Save game request
+Request method: POST
+Content type: application/json
+Input data: {"difficulty":"beginner","time":60,"moves":71,"flags":0,"result":"won","userId":3}
+Session user_id: 3
+Request user_id: 3
+Game data prepared: {"difficulty":"beginner","time":60,"moves":71,"flags":0,"result":"won"}
+Game saved, result: {"session_id":"1","score":2298}

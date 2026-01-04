@@ -11,37 +11,51 @@ require_once 'db_connection.php';
  * Сохранить результат игры
  */
 function saveGameSession($userId, $gameData) {
+    // Логируем вызов функции
+    error_log("saveGameSession called: userId=$userId, data=" . json_encode($gameData));
+
     $db = Database::getInstance();
 
     // Подготавливаем данные
     $difficulty = $gameData['difficulty'] ?? 'beginner';
     $gameState = $gameData['result'] ?? 'lost';
-    $totalTime = $gameData['time'] ?? 0;
+    $totalTime = (int)($gameData['time'] ?? 0);
     $score = calculateScore($totalTime, $difficulty, $gameData['moves'] ?? 0, $gameState);
 
-    // Сохраняем игровую сессию
-    $db->query(
-        "INSERT INTO game_sessions 
-        (user_id, difficulty, game_state, total_time, moves_count, flags_used, score) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [
-            $userId,
-            $difficulty,
-            $gameState,
-            $totalTime,
-            $gameData['moves'] ?? 0,
-            $gameData['flags'] ?? 0,
-            $score
-        ]
-    );
+    // Логируем рассчитанные данные
+    error_log("Calculated score: $score, time: $totalTime, state: $gameState");
 
-    $sessionId = $db->lastInsertId();
+    try {
+        // Сохраняем игровую сессию
+        $db->query(
+            "INSERT INTO game_sessions 
+            (user_id, difficulty, game_state, total_time, moves_count, flags_used, score) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [
+                $userId,
+                $difficulty,
+                $gameState,
+                $totalTime,
+                $gameData['moves'] ?? 0,
+                $gameData['flags'] ?? 0,
+                $score
+            ]
+        );
 
-    // Обновляем таблицу лидеров
-    updateLeaderboard($userId, $difficulty, $totalTime, $score, $gameState);
+        $sessionId = $db->lastInsertId();
+        error_log("Game session saved with ID: $sessionId");
 
-    return ['session_id' => $sessionId, 'score' => $score];
+        // Обновляем таблицу лидеров
+        updateLeaderboard($userId, $difficulty, $totalTime, $score, $gameState);
+
+        return ['session_id' => $sessionId, 'score' => $score];
+
+    } catch (Exception $e) {
+        error_log("Error saving game session: " . $e->getMessage());
+        throw $e;
+    }
 }
+
 
 /**
  * Обновить таблицу лидеров

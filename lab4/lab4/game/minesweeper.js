@@ -354,7 +354,12 @@ class MinesweeperGame {
      * Сохранение результата игры
      */
     async saveGameResult() {
-        if (!window.gameConfig.isLoggedIn) {
+        console.log('Saving game result...');
+        console.log('Game config:', gameConfig);
+        console.log('isLoggedIn:', gameConfig.isLoggedIn);
+        console.log('userId:', gameConfig.userId);
+
+        if (!gameConfig.isLoggedIn) { // Изменено здесь
             console.log('User not logged in, score not saved');
             return;
         }
@@ -367,26 +372,32 @@ class MinesweeperGame {
             result: 'won'
         };
 
+        console.log('Game data to save:', gameData);
+
         try {
-            const response = await fetch(window.gameConfig.apiBaseUrl + 'save_game.php', {
+            const response = await fetch(gameConfig.apiBaseUrl + 'save_game.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     ...gameData,
-                    userId: window.gameConfig.userId
+                    userId: gameConfig.userId
                 })
             });
 
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
             const result = await response.json();
-            console.log('Game saved:', result);
+            console.log('Server response:', result);
 
             if (result.success && result.score) {
                 this.elements.currentScore.textContent = result.score;
             }
         } catch (error) {
             console.error('Error saving game:', error);
+            console.error('Error details:', error.message);
         }
     }
 
