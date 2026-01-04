@@ -39,12 +39,21 @@ ob_start();
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="minesweeper.css">
         <style>
-            .game-container {
+            /* ПЕРЕОПРЕДЕЛЯЕМ стили для игровой страницы */
+            .main.game-page {
+                display: block; /* Убираем flex из стилей style.css */
+                padding: 20px 0; /* Уменьшаем паддинг для игровой страницы */
+            }
+
+            .main.game-page .container {
+                display: block; /* Убираем flex из стилей style.css */
                 max-width: 900px;
                 margin: 0 auto;
                 padding: 20px;
+                width: 100%;
             }
 
+            /* Стили для быстрых ссылок */
             .quick-links {
                 display: flex;
                 gap: 15px;
@@ -71,8 +80,8 @@ ob_start();
     <body>
     <?php include '../includes/header.php'; ?>
 
-    <main class="main">
-        <div class="container game-container">
+    <main class="main game-page"> <!-- Добавляем специальный класс для игровой страницы -->
+        <div class="container">
             <?php echo $userMessage; ?>
 
             <h1 style="color: #00ADB5; text-align: center; margin-bottom: 30px;">
