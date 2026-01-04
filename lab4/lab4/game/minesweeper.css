@@ -2,13 +2,14 @@
 
 /* Контейнер игры */
 #minesweeper-game {
-    max-width: 800px;
+    max-width: 1000px; /* Увеличиваем для expert уровня */
     margin: 0 auto;
     padding: 20px;
     background: rgba(34, 40, 49, 0.8);
     border-radius: 15px;
     border: 2px solid rgba(0, 173, 181, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
 }
 
 /* Шапка игры */
@@ -87,12 +88,13 @@
     border-radius: 8px;
     margin: 20px 0;
     justify-content: center;
+    max-width: 100%; /* Гарантируем, что не выходит за пределы */
 }
 
 /* Клетки */
 .cell {
-    width: 35px;
-    height: 35px;
+    width: 30px; /* Немного уменьшаем для expert */
+    height: 30px;
     background: #4a505a;
     border: 3px outset #5a626d;
     display: flex;
@@ -102,8 +104,30 @@
     cursor: pointer;
     user-select: none;
     transition: all 0.1s;
-    font-size: 16px;
+    font-size: 14px; /* Немного уменьшаем шрифт */
 }
+
+.game-board.expert {
+    /* Уменьшаем клетки еще больше для expert */
+    grid-template-columns: repeat(30, 1fr);
+}
+
+.game-board.expert .cell {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+}
+
+/* Стили для промежуточного уровня */
+.game-board.intermediate {
+    grid-template-columns: repeat(16, 1fr);
+}
+
+/* Стили для начального уровня */
+.game-board.beginner {
+    grid-template-columns: repeat(9, 1fr);
+}
+
 
 .cell:hover {
     background: #5a626d;
@@ -145,20 +169,49 @@
 }
 
 @keyframes explode {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Цифры */
-.cell.num-1 { color: #00ADB5; }
-.cell.num-2 { color: #28a745; }
-.cell.num-3 { color: #ff6b6b; }
-.cell.num-4 { color: #6f42c1; }
-.cell.num-5 { color: #fd7e14; }
-.cell.num-6 { color: #20c997; }
-.cell.num-7 { color: #e83e8c; }
-.cell.num-8 { color: #ffc107; }
+.cell.num-1 {
+    color: #00ADB5;
+}
+
+.cell.num-2 {
+    color: #28a745;
+}
+
+.cell.num-3 {
+    color: #ff6b6b;
+}
+
+.cell.num-4 {
+    color: #6f42c1;
+}
+
+.cell.num-5 {
+    color: #fd7e14;
+}
+
+.cell.num-6 {
+    color: #20c997;
+}
+
+.cell.num-7 {
+    color: #e83e8c;
+}
+
+.cell.num-8 {
+    color: #ffc107;
+}
 
 /* Кнопки управления */
 .controls {
@@ -259,11 +312,46 @@
 }
 
 /* Адаптивность */
+@media (max-width: 1024px) {
+    #minesweeper-game {
+        max-width: 95%; /* На больших экранах используем процент */
+        padding: 15px;
+    }
+
+    /* Уменьшаем клетки для intermediate на планшетах */
+    .game-board.intermediate .cell {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
+
+    /* Еще больше уменьшаем для expert */
+    .game-board.expert .cell {
+        width: 22px;
+        height: 22px;
+        font-size: 10px;
+    }
+}
+
 @media (max-width: 768px) {
     .cell {
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    /* Для мобильных еще уменьшаем expert */
+    .game-board.expert .cell {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+    }
+
+    /* Для intermediate на мобильных */
+    .game-board.intermediate .cell {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
     }
 
     .counter {
@@ -291,9 +379,30 @@
 
 @media (max-width: 480px) {
     .cell {
-        width: 22px;
-        height: 22px;
-        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    /* Для очень маленьких экранов добавляем горизонтальный скролл */
+    #minesweeper-game {
+        overflow-x: scroll;
+    }
+
+    /* Минимальные размеры для expert */
+    .game-board.expert .cell {
+        width: 16px;
+        height: 16px;
+        font-size: 8px;
+        border-width: 2px;
+    }
+
+    /* Минимальные размеры для intermediate */
+    .game-board.intermediate .cell {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+        border-width: 2px;
     }
 
     .game-header {
@@ -312,9 +421,15 @@
 
 /* Анимация победы */
 @keyframes winPulse {
-    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
-    70% { box-shadow: 0 0 0 20px rgba(40, 167, 69, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
 }
 
 .win-animation {
@@ -327,11 +442,23 @@
 }
 
 @keyframes hintBlink {
-    0%, 100% { background-color: rgba(255, 193, 7, 0.3); }
-    50% { background-color: rgba(255, 193, 7, 0.7); }
+    0%, 100% {
+        background-color: rgba(255, 193, 7, 0.3);
+    }
+    50% {
+        background-color: rgba(255, 193, 7, 0.7);
+    }
 }
 
 /* Статус игры */
-#game-status.playing { color: #00ADB5; }
-#game-status.won { color: #28a745; }
-#game-status.lost { color: #ff6b6b; }
+#game-status.playing {
+    color: #00ADB5;
+}
+
+#game-status.won {
+    color: #28a745;
+}
+
+#game-status.lost {
+    color: #ff6b6b;
+}

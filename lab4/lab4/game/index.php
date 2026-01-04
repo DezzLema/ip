@@ -213,6 +213,45 @@ ob_start();
     </body>
     </html>
 
+    <style>
+        /* ПЕРЕОПРЕДЕЛЯЕМ стили для игровой страницы */
+        .main.game-page {
+            display: block;
+            padding: 20px 0;
+        }
+
+        .main.game-page .container {
+            display: block;
+            max-width: 1200px; /* Увеличиваем для expert уровня */
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Стили для быстрых ссылок */
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            padding: 10px 20px;
+            background: rgba(0, 173, 181, 0.1);
+            color: #00ADB5;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid rgba(0, 173, 181, 0.3);
+            transition: all 0.3s;
+        }
+
+        .quick-link:hover {
+            background: rgba(0, 173, 181, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+
 <?php
 $content = ob_get_clean();
 echo $content;
