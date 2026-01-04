@@ -1,0 +1,337 @@
+/* game/minesweeper.css */
+
+/* Контейнер игры */
+#minesweeper-game {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(34, 40, 49, 0.8);
+    border-radius: 15px;
+    border: 2px solid rgba(0, 173, 181, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Шапка игры */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.counter {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    font-weight: bold;
+    background: #000;
+    color: #ff6b6b;
+    padding: 8px 20px;
+    border-radius: 8px;
+    min-width: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px solid #333;
+}
+
+.counter.timer {
+    color: #00ADB5;
+}
+
+.counter.mines-counter {
+    color: #ff6b6b;
+}
+
+/* Кнопка сброса */
+#reset-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 28px;
+    background: #00ADB5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reset-btn:hover {
+    background: #00969d;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 173, 181, 0.5);
+}
+
+#reset-btn.game-over {
+    background: #ff6b6b;
+}
+
+#reset-btn.game-won {
+    background: #28a745;
+}
+
+/* Игровое поле */
+.game-board {
+    display: grid;
+    gap: 2px;
+    background: #222831;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+/* Клетки */
+.cell {
+    width: 35px;
+    height: 35px;
+    background: #4a505a;
+    border: 3px outset #5a626d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s;
+    font-size: 16px;
+}
+
+.cell:hover {
+    background: #5a626d;
+    transform: scale(1.05);
+}
+
+/* Открытая клетка */
+.cell.revealed {
+    background: #393E46;
+    border: 1px solid #4a505a;
+    transform: scale(1);
+}
+
+/* Мина */
+.cell.mine {
+    background: #ff6b6b;
+    color: white;
+}
+
+.cell.mine::after {
+    content: '💣';
+    font-size: 18px;
+}
+
+/* Флаг */
+.cell.flagged {
+    background: rgba(255, 193, 7, 0.2);
+}
+
+.cell.flagged::after {
+    content: '🚩';
+    font-size: 16px;
+}
+
+/* Взорванная мина */
+.cell.mine.exploded {
+    background: #dc3545;
+    animation: explode 0.5s ease-out;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Цифры */
+.cell.num-1 { color: #00ADB5; }
+.cell.num-2 { color: #28a745; }
+.cell.num-3 { color: #ff6b6b; }
+.cell.num-4 { color: #6f42c1; }
+.cell.num-5 { color: #fd7e14; }
+.cell.num-6 { color: #20c997; }
+.cell.num-7 { color: #e83e8c; }
+.cell.num-8 { color: #ffc107; }
+
+/* Кнопки управления */
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.game-btn {
+    padding: 12px 25px;
+    background: #00ADB5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.game-btn:hover:not(:disabled) {
+    background: #00969d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 173, 181, 0.3);
+}
+
+.game-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Кнопки сложности */
+.difficulty-btn {
+    padding: 12px 20px;
+    background: rgba(57, 62, 70, 0.6);
+    color: #eee;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    flex: 1;
+    text-align: center;
+}
+
+.difficulty-btn.active {
+    background: rgba(0, 173, 181, 0.3);
+    color: #00ADB5;
+    border-color: #00ADB5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 173, 181, 0.2);
+}
+
+.difficulty-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #222831;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid #00ADB5;
+    text-align: center;
+}
+
+.modal h2 {
+    color: #00ADB5;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.modal p {
+    color: #eee;
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .cell {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .counter {
+        font-size: 18px;
+        min-width: 80px;
+        padding: 6px 15px;
+    }
+
+    #reset-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .game-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .difficulty-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell {
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .difficulty-selector div {
+        flex-direction: column;
+    }
+}
+
+/* Анимация победы */
+@keyframes winPulse {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+.win-animation {
+    animation: winPulse 2s infinite;
+}
+
+/* Подсказка */
+.cell.hint {
+    animation: hintBlink 1s infinite;
+}
+
+@keyframes hintBlink {
+    0%, 100% { background-color: rgba(255, 193, 7, 0.3); }
+    50% { background-color: rgba(255, 193, 7, 0.7); }
+}
+
+/* Статус игры */
+#game-status.playing { color: #00ADB5; }
+#game-status.won { color: #28a745; }
+#game-status.lost { color: #ff6b6b; }

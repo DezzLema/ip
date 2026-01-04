@@ -112,7 +112,7 @@ ob_start();
                     </button>
 
                     <p style="text-align: center; margin-top: 20px;">
-                        Don\'t have an account? <a href="register.php">Register here</a>
+                        Don`t have an account? <a href="register.php">Register here</a>
                     </p>
 
                     <p style="text-align: center; margin-top: 10px;">

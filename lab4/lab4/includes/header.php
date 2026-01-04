@@ -53,6 +53,13 @@ $is_admin_section = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?php echo $is_admin_section ? '../game/index.php' : 'game/index.php'; ?>"
+                            <?php echo ($current_page == 'game') ? 'class="active"' : ''; ?>>
+                        Minesweeper 🎮
+                    </a>
+                </li>
+
                 <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id']): ?>
                     <?php if (isAdmin()): ?>
                         <li>
