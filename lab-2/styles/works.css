@@ -1,6 +1,3 @@
-/* ========== PURE CSS GALLERY ========== */
-/* No JavaScript Required */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background-color: #222831;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -17,7 +14,7 @@ body {
     padding: 20px;
 }
 
-/* Gallery Container */
+/* Контейнер галлереи */
 .pure-css-gallery {
     width: 100%;
     max-width: 900px;
@@ -215,6 +212,8 @@ body {
     font-family: monospace;
     color: #00ADB5;
 }
+
+
 
 /* ========== PUZZLE ANIMATION ========== */
 
