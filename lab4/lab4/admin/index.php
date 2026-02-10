@@ -377,7 +377,7 @@ ob_start();
             <!-- Хедер -->
             <div class="admin-header">
                 <div class="welcome-box">
-                    <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['user_name']); ?>! 👋</h1>
+                    <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['user_name']); ?>!</h1>
                     <p>Here's what's happening with your site today.</p>
                 </div>
 
@@ -390,7 +390,6 @@ ob_start();
             <!-- Статистика -->
             <div class="stats-grid">
                 <div class="stat-card" style="border-top: 4px solid #00ADB5;">
-                    <div class="stat-icon">👥</div>
                     <div class="stat-number"><?php echo $stats['total_users']; ?></div>
                     <div class="stat-label">Total Users</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -399,7 +398,6 @@ ob_start();
                 </div>
 
                 <div class="stat-card" style="border-top: 4px solid #ff6b6b;">
-                    <div class="stat-icon">📨</div>
                     <div class="stat-number"><?php echo $stats['unread_messages']; ?></div>
                     <div class="stat-label">Unread Messages</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -408,7 +406,6 @@ ob_start();
                 </div>
 
                 <div class="stat-card" style="border-top: 4px solid #28a745;">
-                    <div class="stat-icon">🎨</div>
                     <div class="stat-number"><?php echo $stats['published_works']; ?></div>
                     <div class="stat-label">Published Works</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -417,7 +414,6 @@ ob_start();
                 </div>
 
                 <div class="stat-card" style="border-top: 4px solid #ffc107;">
-                    <div class="stat-icon">📊</div>
                     <div class="stat-number"><?php echo $stats['today_messages']; ?></div>
                     <div class="stat-label">Messages Today</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -428,10 +424,10 @@ ob_start();
 
             <!-- Быстрые действия -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                <a href="messages.php" class="admin-btn btn-primary">📨 Manage Messages</a>
-                <a href="users.php" class="admin-btn btn-primary">👥 Manage Users</a>
-                <a href="works.php" class="admin-btn btn-primary">🎨 Manage Works</a>
-                <a href="../contact.php" class="admin-btn btn-secondary" target="_blank">📝 View Contact Form</a>
+                <a href="messages.php" class="admin-btn btn-primary"> Manage Messages</a>
+                <a href="users.php" class="admin-btn btn-primary"> Manage Users</a>
+                <a href="works.php" class="admin-btn btn-primary"> Manage Works</a>
+                <a href="../contact.php" class="admin-btn btn-secondary" target="_blank"> View Contact Form</a>
             </div>
 
             <!-- Основной дашборд -->
