@@ -62,18 +62,16 @@
         
         <div class="gallery-controls">
             <div class="nav-buttons">
-                <label for="slide-1" class="nav-btn prev">‹</label>
-                
+                <button class="nav-btn prev">‹</button>
                 <div class="nav-dots">
-                    <label for="slide-1" class="nav-dot dot-1 active">●</label>
-                    <label for="slide-2" class="nav-dot dot-2">●</label>
-                    <label for="slide-3" class="nav-dot dot-3">●</label>
+                    <span class="nav-dot" data-slide="0">●</span>
+                    <span class="nav-dot" data-slide="1">●</span>
+                    <span class="nav-dot" data-slide="2">●</span>
                 </div>
-                
-                <label for="slide-2" class="nav-btn next">›</label>
+                <button class="nav-btn next">›</button>
             </div>
         </div>
-    </div>
+        </div>
 
     <div class="divider">
         <img src="img/Line 2.png" alt="Divider line" class="line">
@@ -106,5 +104,82 @@
             <p class="copyright">&copy; 2023 Creative UI Designer. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.gallery-radio');
+            const prevBtn = document.querySelector('.nav-btn.prev');
+            const nextBtn = document.querySelector('.nav-btn.next');
+            
+            console.log('Всего слайдов:', slides.length); // Для отладки
+            
+            // Ищем активный слайд
+            function getCurrentSlideIndex() {
+                for(let i = 0; i < slides.length; i++) {
+                    if(slides[i].checked) {
+                        console.log('Активный слайд:', i); // Для отладки
+                        return i;
+                    }
+                }
+                return 0;
+            }
+            
+            // Переключаем на предыдущий слайд
+            function goToPrevSlide() {
+                const currentIndex = getCurrentSlideIndex();
+                const prevIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+                console.log('Переключаем на предыдущий:', prevIndex); // Для отладки
+                
+                slides[prevIndex].checked = true;
+                updateNavButtons(prevIndex);
+            }
+            
+            // Переключаем на следующий слайд
+            function goToNextSlide() {
+                const currentIndex = getCurrentSlideIndex();
+                const nextIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+                console.log('Переключаем на следующий:', nextIndex); // Для отладки
+                
+                slides[nextIndex].checked = true;
+                updateNavButtons(nextIndex);
+            }
+            
+            // Обновляем состояние кнопок
+            function updateNavButtons(currentIndex) {
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach(dot => dot.classList.remove('active'));
+                if(dots[currentIndex]) {
+                    dots[currentIndex].classList.add('active');
+                }
+            }
+            
+            // Вешаем обработчики событий
+            if(prevBtn) {
+                console.log('Кнопка Prev найдена');
+                prevBtn.addEventListener('click', goToPrevSlide);
+            }
+            
+            if(nextBtn) {
+                console.log('Кнопка Next найдена');
+                nextBtn.addEventListener('click', goToNextSlide);
+            }
+            
+            // Добавляем обработчики для точек навигации
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    console.log('Клик по точке:', index);
+                    if(slides[index]) {
+                        slides[index].checked = true;
+                        updateNavButtons(index);
+                    }
+                });
+            });
+            
+            
+            
+            // Инициализируем активную точку
+            updateNavButtons(getCurrentSlideIndex());
+        });
+    </script>
 </body>
 </html>
