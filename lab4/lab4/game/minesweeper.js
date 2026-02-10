@@ -68,9 +68,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Размещение мин (после первого клика)
-     */
+    //размещаем минки после первого клика
     placeMines(firstX, firstY) {
         let minesPlaced = 0;
 
@@ -97,9 +95,7 @@ class MinesweeperGame {
         this.calculateNeighborMines();
     }
 
-    /**
-     * Подсчет мин вокруг клеток
-     */
+    //считаем минки вокруг клеточек
     calculateNeighborMines() {
         for (let y = 0; y < this.config.height; y++) {
             for (let x = 0; x < this.config.width; x++) {
@@ -110,9 +106,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Подсчет мин вокруг конкретной клетки
-     */
+    //считаем мины возле конкретных клеток
     countNeighborMines(x, y) {
         let count = 0;
         const neighbors = this.getNeighbors(x, y);
@@ -126,9 +120,7 @@ class MinesweeperGame {
         return count;
     }
 
-    /**
-     * Получение соседей клетки
-     */
+    //получение соседней клетки
     getNeighbors(x, y) {
         const neighbors = [];
         for (let dy = -1; dy <= 1; dy++) {
@@ -146,9 +138,7 @@ class MinesweeperGame {
         return neighbors;
     }
 
-    /**
-     * Отрисовка игрового поля
-     */
+    //отрисовка поля
     renderBoard() {
         this.elements.board.innerHTML = '';
         this.elements.board.style.gridTemplateColumns = `repeat(${this.config.width}, 35px)`;
@@ -182,9 +172,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Обработка клика по клетке
-     */
+    //обработчик клика по клетке
     handleCellClick(x, y, isRightClick = false) {
         const cell = this.board[y][x];
 
@@ -214,9 +202,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Открытие клетки
-     */
+    //открытие клетки
     revealCell(x, y) {
         const cell = this.board[y][x];
 
@@ -229,7 +215,7 @@ class MinesweeperGame {
         this.revealedCount++;
         this.movesCount++;
 
-        // Если мина - игра окончена
+        // Если мина игра окончена
         if (cell.isMine) {
             cell.element.classList.add('exploded');
             this.gameOver(false);
@@ -254,9 +240,7 @@ class MinesweeperGame {
         this.updateUI();
     }
 
-    /**
-     * Рекурсивное открытие соседей
-     */
+    //рекурсивно открываем сосед. клетки
     revealNeighbors(x, y) {
         const neighbors = this.getNeighbors(x, y);
 
@@ -268,9 +252,7 @@ class MinesweeperGame {
         });
     }
 
-    /**
-     * Переключение флага
-     */
+    //переключение флага
     toggleFlag(x, y) {
         const cell = this.board[y][x];
 
@@ -295,17 +277,13 @@ class MinesweeperGame {
         this.updateUI();
     }
 
-    /**
-     * Проверка победы
-     */
+    //проверка победы
     checkWin() {
         const totalCells = this.config.width * this.config.height;
         return this.revealedCount === totalCells - this.config.mines;
     }
 
-    /**
-     * Завершение игры
-     */
+    //завершение
     gameOver(isWin) {
         this.gameState = isWin ? 'won' : 'lost';
         this.stopTimer();
@@ -331,9 +309,7 @@ class MinesweeperGame {
         this.showGameOverModal(isWin);
     }
 
-    /**
-     * Показать все мины
-     */
+    //показать все мины
     revealAllMines() {
         for (let y = 0; y < this.config.height; y++) {
             for (let x = 0; x < this.config.width; x++) {
@@ -346,9 +322,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Сохранение результата игры
-     */
+    //сохранение результата
     async saveGameResult() {
         console.log('Saving game result...');
         console.log('Game config:', gameConfig);
@@ -397,9 +371,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Показать модальное окно окончания игры
-     */
+    //модальное окно в конце игры
     showGameOverModal(isWin) {
         // Создаем модальное окно
         const modal = document.createElement('div');
@@ -428,7 +400,7 @@ class MinesweeperGame {
 
         document.body.appendChild(modal);
 
-        // Обработчики кнопок
+        //обработчики кнопок
         modal.querySelector('#play-again-btn').addEventListener('click', () => {
             document.body.removeChild(modal);
             this.resetGame();
@@ -439,9 +411,7 @@ class MinesweeperGame {
         });
     }
 
-    /**
-     * Расчет очков
-     */
+    //считаем очки
     calculateScore() {
         if (this.gameState !== 'won') return 0;
 
@@ -457,18 +427,14 @@ class MinesweeperGame {
         return baseScore + timeBonus + efficiencyBonus;
     }
 
-    /**
-     * Форматирование времени
-     */
+    
     formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
-    /**
-     * Таймер
-     */
+    
     startTimer() {
         this.startTime = Date.now();
         this.timerInterval = setInterval(() => {
@@ -483,9 +449,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Сброс игры
-     */
+    
     resetGame() {
         this.stopTimer();
 
@@ -507,9 +471,7 @@ class MinesweeperGame {
         this.elements.resetBtn.id = 'reset-btn';
     }
 
-    /**
-     * Подсказка
-     */
+    
     useHint() {
         if (this.hintsLeft <= 0 || this.gameState !== 'playing') {
             return;
@@ -542,9 +504,7 @@ class MinesweeperGame {
         }
     }
 
-    /**
-     * Пауза/продолжение
-     */
+    
     togglePause() {
         if (this.gameState === 'paused') {
             this.gameState = 'playing';
@@ -559,9 +519,7 @@ class MinesweeperGame {
         this.updateUI();
     }
 
-    /**
-     * Обновление UI
-     */
+    //обновление ui
     updateUI() {
         // Таймер
         this.elements.timer.textContent = this.elapsedTime;
@@ -595,9 +553,7 @@ class MinesweeperGame {
         this.elements.pauseBtn.disabled = this.gameState === 'ready' || this.gameState === 'won' || this.gameState === 'lost';
     }
 
-    /**
-     * Настройка обработчиков событий
-     */
+    //настройка обработчиков событий
     setupEventListeners() {
         // Клики по клеткам
         this.elements.board.addEventListener('click', (e) => {
@@ -657,9 +613,7 @@ class MinesweeperGame {
         });
     }
 
-    /**
-     * Изменение сложности
-     */
+    
     changeDifficulty(difficulty) {
         const configs = {
             'beginner': { width: 9, height: 9, mines: 10 },

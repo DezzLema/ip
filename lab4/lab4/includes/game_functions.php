@@ -1,15 +1,7 @@
 <?php
-// includes/game_functions.php
-
-/**
- * Функции для работы с игрой Minesweeper
- */
-
 require_once 'db_connection.php';
 
-/**
- * Сохранить результат игры
- */
+
 function saveGameSession($userId, $gameData) {
     // Логируем вызов функции
     error_log("saveGameSession called: userId=$userId, data=" . json_encode($gameData));
@@ -57,9 +49,7 @@ function saveGameSession($userId, $gameData) {
 }
 
 
-/**
- * Обновить таблицу лидеров
- */
+
 function updateLeaderboard($userId, $difficulty, $time, $score, $result) {
     $db = Database::getInstance();
 
@@ -119,9 +109,7 @@ function updateLeaderboard($userId, $difficulty, $time, $score, $result) {
     }
 }
 
-/**
- * Рассчитать очки
- */
+
 function calculateScore($time, $difficulty, $moves, $result) {
     if ($result !== 'won') {
         return 0;
@@ -148,9 +136,7 @@ function calculateScore($time, $difficulty, $moves, $result) {
     return max(100, $totalScore); // Минимум 100 очков
 }
 
-/**
- * Получить статистику пользователя
- */
+
 function getUserGameStats($userId) {
     $db = Database::getInstance();
 
@@ -196,9 +182,7 @@ function getUserGameStats($userId) {
     ];
 }
 
-/**
- * Получить таблицу лидеров
- */
+
 function getLeaderboard($difficulty = 'beginner', $limit = 20) {
     $db = Database::getInstance();
 
@@ -213,9 +197,7 @@ function getLeaderboard($difficulty = 'beginner', $limit = 20) {
     );
 }
 
-/**
- * Получить глобальную статистику (для админа)
- */
+
 function getGlobalGameStats() {
     $db = Database::getInstance();
 
@@ -233,9 +215,7 @@ function getGlobalGameStats() {
     );
 }
 
-/**
- * Получить топ игроков по общим очкам
- */
+
 function getTopPlayers($limit = 10) {
     $db = Database::getInstance();
 

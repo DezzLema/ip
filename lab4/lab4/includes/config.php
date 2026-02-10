@@ -1,11 +1,11 @@
 <?php
-// includes/config.php
 
-// Настройки базы данных
+
+//настройки бд
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'ui_designer_db');
 define('DB_USER', 'root');
-define('DB_PASS', ''); // По умолчанию пустой в XAMPP
+define('DB_PASS', '');
 
 // Настройки сайта
 define('SITE_NAME', 'Creative UI Designer');
