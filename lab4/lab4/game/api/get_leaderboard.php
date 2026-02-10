@@ -1,5 +1,4 @@
 <?php
-// game/api/get_leaderboard.php
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');

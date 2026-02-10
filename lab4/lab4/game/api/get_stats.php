@@ -1,5 +1,4 @@
 <?php
-// game/api/get_stats.php
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -24,7 +23,7 @@ try {
     // Получаем статистику
     $stats = getUserGameStats($userId);
 
-    // Фильтруем по сложности если нужно
+    // Фильтруем по сложности
     if ($difficulty) {
         $filteredStats = array_filter($stats['by_difficulty'], function($item) use ($difficulty) {
             return $item['difficulty'] === $difficulty;

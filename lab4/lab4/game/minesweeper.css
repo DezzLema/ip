@@ -1,18 +1,15 @@
-/* game/minesweeper.css */
-
-/* Контейнер игры */
 #minesweeper-game {
-    max-width: 1000px; /* Увеличиваем для expert уровня */
+    max-width: 1000px; 
     margin: 0 auto;
     padding: 20px;
     background: rgba(34, 40, 49, 0.8);
     border-radius: 15px;
     border: 2px solid rgba(0, 173, 181, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
+    overflow-x: auto; 
 }
 
-/* Шапка игры */
+
 .game-header {
     display: flex;
     justify-content: space-between;
@@ -88,12 +85,12 @@
     border-radius: 8px;
     margin: 20px 0;
     justify-content: center;
-    max-width: 100%; /* Гарантируем, что не выходит за пределы */
+    max-width: 100%;
 }
 
 /* Клетки */
 .cell {
-    width: 30px; /* Немного уменьшаем для expert */
+    width: 30px;
     height: 30px;
     background: #4a505a;
     border: 3px outset #5a626d;
@@ -104,11 +101,10 @@
     cursor: pointer;
     user-select: none;
     transition: all 0.1s;
-    font-size: 14px; /* Немного уменьшаем шрифт */
+    font-size: 14px;
 }
 
 .game-board.expert {
-    /* Уменьшаем клетки еще больше для expert */
     grid-template-columns: repeat(30, 1fr);
 }
 
@@ -118,12 +114,10 @@
     font-size: 12px;
 }
 
-/* Стили для промежуточного уровня */
 .game-board.intermediate {
     grid-template-columns: repeat(16, 1fr);
 }
 
-/* Стили для начального уровня */
 .game-board.beginner {
     grid-template-columns: repeat(9, 1fr);
 }
@@ -134,7 +128,7 @@
     transform: scale(1.05);
 }
 
-/* Открытая клетка */
+
 .cell.revealed {
     background: #393E46;
     border: 1px solid #4a505a;
@@ -311,21 +305,19 @@
     line-height: 1.6;
 }
 
-/* Адаптивность */
+/* адаптив */
 @media (max-width: 1024px) {
     #minesweeper-game {
-        max-width: 95%; /* На больших экранах используем процент */
+        max-width: 95%;
         padding: 15px;
     }
 
-    /* Уменьшаем клетки для intermediate на планшетах */
     .game-board.intermediate .cell {
         width: 26px;
         height: 26px;
         font-size: 12px;
     }
 
-    /* Еще больше уменьшаем для expert */
     .game-board.expert .cell {
         width: 22px;
         height: 22px;
@@ -340,14 +332,14 @@
         font-size: 12px;
     }
 
-    /* Для мобильных еще уменьшаем expert */
+
     .game-board.expert .cell {
         width: 18px;
         height: 18px;
         font-size: 9px;
     }
 
-    /* Для intermediate на мобильных */
+
     .game-board.intermediate .cell {
         width: 22px;
         height: 22px;
@@ -384,12 +376,10 @@
         font-size: 10px;
     }
 
-    /* Для очень маленьких экранов добавляем горизонтальный скролл */
     #minesweeper-game {
         overflow-x: scroll;
     }
 
-    /* Минимальные размеры для expert */
     .game-board.expert .cell {
         width: 16px;
         height: 16px;
@@ -397,7 +387,7 @@
         border-width: 2px;
     }
 
-    /* Минимальные размеры для intermediate */
+
     .game-board.intermediate .cell {
         width: 18px;
         height: 18px;

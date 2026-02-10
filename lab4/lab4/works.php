@@ -4,7 +4,7 @@ require_once 'includes/db_connection.php';
 
 $db = Database::getInstance();
 
-// ПРОВЕРКА АВТОРИЗАЦИИ
+// проверка авторизации
 if (!isset($_SESSION['user_id'])) {
     // Если пользователь не авторизован, перенаправляем на страницу логина
     $_SESSION['redirect_url'] = 'works.php';
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Получаем все опубликованные работы из базы данных
+// получаем работы из бд
 $works = $db->fetchAll("
     SELECT * FROM works 
     WHERE is_published = 1 

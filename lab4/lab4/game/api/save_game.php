@@ -1,7 +1,6 @@
 <?php
-// game/api/save_game.php
 
-// Включите вывод ошибок для отладки
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -11,7 +10,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Добавьте CORS заголовки
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
@@ -21,17 +20,17 @@ require_once '../../includes/config.php';
 require_once '../../includes/db_connection.php';
 require_once '../../includes/game_functions.php';
 
-// Начинаем сессию если нужно
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Логируем входящий запрос
+
 file_put_contents('debug.log', date('Y-m-d H:i:s') . " - Save game request\n", FILE_APPEND);
 file_put_contents('debug.log', "Request method: " . $_SERVER['REQUEST_METHOD'] . "\n", FILE_APPEND);
 file_put_contents('debug.log', "Content type: " . $_SERVER['CONTENT_TYPE'] . "\n", FILE_APPEND);
 
-// Проверяем метод запроса
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     file_put_contents('debug.log', "Wrong method\n", FILE_APPEND);
     http_response_code(405);
@@ -39,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Получаем данные из POST запроса
+
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Логируем полученные данные
+
 file_put_contents('debug.log', "Input data: " . json_encode($input) . "\n", FILE_APPEND);
 
 if (!$input) {
@@ -53,7 +52,7 @@ if (!$input) {
     exit;
 }
 
-// Проверяем обязательные поля
+
 $requiredFields = ['userId', 'difficulty', 'time', 'result'];
 $missingFields = [];
 foreach ($requiredFields as $field) {
@@ -73,14 +72,14 @@ if (!empty($missingFields)) {
     exit;
 }
 
-// Проверяем авторизацию (сравниваем user_id из сессии и из запроса)
+
 $sessionUserId = $_SESSION['user_id'] ?? null;
 $requestUserId = $input['userId'];
 
 file_put_contents('debug.log', "Session user_id: " . $sessionUserId . "\n", FILE_APPEND);
 file_put_contents('debug.log', "Request user_id: " . $requestUserId . "\n", FILE_APPEND);
 
-// Сравниваем user_id - они должны совпадать
+
 if ($sessionUserId != $requestUserId) {
     file_put_contents('debug.log', "User ID mismatch\n", FILE_APPEND);
     http_response_code(401);
@@ -93,7 +92,7 @@ if ($sessionUserId != $requestUserId) {
 }
 
 try {
-    // Подготавливаем данные
+
     $gameData = [
         'difficulty' => $input['difficulty'],
         'time' => (int)$input['time'],
@@ -104,7 +103,7 @@ try {
 
     file_put_contents('debug.log', "Game data prepared: " . json_encode($gameData) . "\n", FILE_APPEND);
 
-    // Сохраняем игровую сессию
+
     $result = saveGameSession($input['userId'], $gameData);
 
     file_put_contents('debug.log', "Game saved, result: " . json_encode($result) . "\n", FILE_APPEND);

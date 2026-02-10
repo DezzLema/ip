@@ -8,11 +8,11 @@ require_once '../includes/game_functions.php';
 $page = 'game';
 $page_title = 'Minesweeper Game';
 
-// Проверяем авторизацию (как в works.php)
+// Проверяем авторизацию
 if (!isset($_SESSION['user_id'])) {
-    // Можно играть без регистрации, но статистика не сохранится
+    // можно играть без регистрации, но статистика не сохранится
     $userMessage = '<div class="info-message" style="background-color: rgba(0,173,181,0.1); color: #00ADB5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <strong>👋 Guest Mode</strong><br>
+        <strong> Guest Mode</strong><br>
         You can play, but your scores won\'t be saved. <a href="../login.php">Login</a> or <a href="../register.php">register</a> to save your progress!
     </div>';
     $isLoggedIn = false;
@@ -39,21 +39,21 @@ ob_start();
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="minesweeper.css">
         <style>
-            /* ПЕРЕОПРЕДЕЛЯЕМ стили для игровой страницы */
+            
             .main.game-page {
-                display: block; /* Убираем flex из стилей style.css */
-                padding: 20px 0; /* Уменьшаем паддинг для игровой страницы */
+                display: block;
+                padding: 20px 0;
             }
 
             .main.game-page .container {
-                display: block; /* Убираем flex из стилей style.css */
+                display: block;
                 max-width: 900px;
                 margin: 0 auto;
                 padding: 20px;
                 width: 100%;
             }
 
-            /* Стили для быстрых ссылок */
+            
             .quick-links {
                 display: flex;
                 gap: 15px;
@@ -80,7 +80,7 @@ ob_start();
     <body>
     <?php include '../includes/header.php'; ?>
 
-    <main class="main game-page"> <!-- Добавляем специальный класс для игровой страницы -->
+    <main class="main game-page"> 
         <div class="container">
             <?php echo $userMessage; ?>
 
@@ -96,7 +96,7 @@ ob_start();
                 <a href="leaderboard.php" class="quick-link"> Leaderboard</a>
             </div>
 
-            <!-- Выбор сложности -->
+           
             <div class="difficulty-selector" style="margin: 30px 0;">
                 <h2 style="color: #eee; margin-bottom: 15px;">Select Difficulty:</h2>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -112,7 +112,7 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Игровое поле -->
+            
             <div id="minesweeper-game">
                 <div class="game-header">
                     <div class="counter mines-counter">💣 <span id="mines-count">10</span></div>
@@ -121,7 +121,7 @@ ob_start();
                 </div>
 
                 <div id="game-board" class="game-board">
-                    <!-- Игровое поле будет сгенерировано JavaScript -->
+                    <!-- игровое поле js генерирует -->
                 </div>
 
                 <div class="controls" style="margin-top: 20px;">
@@ -131,7 +131,7 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Статистика текущей игры -->
+            <!-- стата -->
             <div id="current-game-stats" style="margin-top: 30px; padding: 20px; background: rgba(57,62,70,0.6); border-radius: 10px;">
                 <h3 style="color: #00ADB5; margin-bottom: 15px;">Current Game Stats</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
@@ -157,7 +157,7 @@ ob_start();
     </main>
 
     <script>
-        // Конфигурация игры
+        // конфиг
         const gameConfig = {
             isLoggedIn: <?php echo $isLoggedIn ? 'true' : 'false'; ?>,
             userId: <?php echo $userId ?? 'null'; ?>,
@@ -172,7 +172,6 @@ ob_start();
     </html>
 
     <style>
-        /* ПЕРЕОПРЕДЕЛЯЕМ стили для игровой страницы */
         .main.game-page {
             display: block;
             padding: 20px 0;
@@ -180,13 +179,12 @@ ob_start();
 
         .main.game-page .container {
             display: block;
-            max-width: 1200px; /* Увеличиваем для expert уровня */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             width: 100%;
         }
 
-        /* Стили для быстрых ссылок */
         .quick-links {
             display: flex;
             gap: 15px;

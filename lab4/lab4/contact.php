@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'message' => $message
     ];
 
-    // СЕРВЕРНАЯ ВАЛИДАЦИЯ
-    // Валидация имени
+    // серверная валидация
+    // валидация имени
     if (empty($name)) {
         $errors['name'] = 'Name is required';
     } elseif (strlen($name) < 2) {
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['name'] = 'Name can only contain letters, spaces, hyphens, dots and apostrophes';
     }
 
-    // Валидация email
+    // валидация email
     if (empty($email)) {
         $errors['email'] = 'Email is required';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['message'] = 'Message must not exceed 2000 characters';
     }
 
-    // Защита от спама
+    // защита от спама
     $spam_words = ['http://', 'https://', 'www.', '.com', 'buy now', 'click here', 'viagra', 'casino'];
     $message_lower = strtolower($message);
 
@@ -74,11 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Если нет ошибок, сохраняем в БД
+    // если нет ошибок, сохраняем в бд
     if (empty($errors)) {
         $db = Database::getInstance();
 
-        // Сохраняем в БД
+        // сохранение
         $db->query(
                 "INSERT INTO messages (user_id, name, email, message, ip_address, user_agent) 
              VALUES (?, ?, ?, ?, ?, ?)",
@@ -92,10 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]
         );
 
-        // Сохраняем время отправки для анти-спама
+        // сохраняем время отправки для анти-спама
         $_SESSION['last_submit_time'] = time();
 
-        // Очищаем данные формы
+        // чистим формочку
         $form_data = [
                 'name' => '',
                 'email' => '',
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = true;
         $_SESSION['contact_success'] = "Thank you, $name! Your message has been sent.";
 
-        // Редирект, чтобы избежать повторной отправки при обновлении
+        // редирект, чтобы избежать повторной отправки при обновлении
         header('Location: contact.php?success=1');
         exit;
     }
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-ob_start(); // НАЧИНАЕМ БУФЕРИЗАЦИЮ ВЫВОДА
+ob_start();
 ?>
     <main class="main contact-main">
         <div class="container">
@@ -195,7 +195,6 @@ ob_start(); // НАЧИНАЕМ БУФЕРИЗАЦИЮ ВЫВОДА
                         </div>
                     </div>
 
-                    <!-- Скрытое поле для защиты от ботов (honeypot) -->
                     <div style="display: none;">
                         <input type="text" name="honeypot" id="honeypot" value="">
                     </div>
@@ -463,7 +462,7 @@ $custom_css = '
     }
 </style>';
 
-$content = ob_get_clean(); // ЗАКАНЧИВАЕМ БУФЕРИЗАЦИЮ
+$content = ob_get_clean();
 
 // Включаем шаблоны
 include 'includes/header.php';

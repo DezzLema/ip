@@ -43,18 +43,14 @@ class MinesweeperGame {
         this.setupEventListeners();
     }
 
-    /**
-     * Инициализация игры
-     */
+    
     init() {
         this.createBoard();
         this.renderBoard();
         this.updateUI();
     }
 
-    /**
-     * Создание игрового поля
-     */
+    // генерация игрового поля
     createBoard() {
         this.board = [];
         for (let y = 0; y < this.config.height; y++) {
