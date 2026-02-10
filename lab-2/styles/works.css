@@ -58,12 +58,6 @@ body {
     animation: pulse 2s infinite !important;
 }
 
-
-
-/* Add for more slides:
-#slide-3:checked ~ .slides-container .slide-3 { ... }
-*/
-
 /* Анимация из 9 частей Grid */
 .puzzle-animation {
     position: absolute;
@@ -197,41 +191,6 @@ body {
 .gallery-radio:checked ~ .slides-container .gallery-slide .puzzle-piece.p7 { animation-delay: 0.35s; }
 .gallery-radio:checked ~ .slides-container .gallery-slide .puzzle-piece.p8 { animation-delay: 0.4s; }
 .gallery-radio:checked ~ .slides-container .gallery-slide .puzzle-piece.p9 { animation-delay: 0.45s; }
-
-
-/* Добавить больше секций */
-.add-more {
-    padding: 20px;
-    background: rgba(0, 173, 181, 0.1);
-    border-radius: 10px;
-    border-left: 4px solid #00ADB5;
-}
-
-.add-instruction h3 {
-    color: #00ADB5;
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
-.add-instruction ol {
-    padding-left: 20px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.add-instruction li {
-    margin-bottom: 8px;
-    font-size: 14px;
-}
-
-.add-instruction code {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    color: #00ADB5;
-}
-
-
 
 /* анимка*/
 

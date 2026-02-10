@@ -85,16 +85,15 @@ ob_start();
             <?php echo $userMessage; ?>
 
             <h1 style="color: #00ADB5; text-align: center; margin-bottom: 30px;">
-                🎮 Minesweeper
+                 Minesweeper
             </h1>
 
             <div class="quick-links">
                 <a href="#game" class="quick-link">▶️ Play Now</a>
                 <?php if ($isLoggedIn): ?>
-                    <a href="my_stats.php" class="quick-link">📊 My Statistics</a>
+                    <a href="my_stats.php" class="quick-link"> My Statistics</a>
                 <?php endif; ?>
-                <a href="leaderboard.php" class="quick-link">🏆 Leaderboard</a>
-                <a href="#how-to-play" class="quick-link">❓ How to Play</a>
+                <a href="leaderboard.php" class="quick-link"> Leaderboard</a>
             </div>
 
             <!-- Выбор сложности -->
@@ -151,47 +150,6 @@ ob_start();
                     <div>
                         <div style="color: #aaa; font-size: 14px;">Status</div>
                         <div id="game-status" style="font-size: 24px; font-weight: bold; color: #28a745;">Playing</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Инструкция -->
-            <div id="how-to-play" style="margin-top: 50px; padding: 30px; background: rgba(57,62,70,0.6); border-radius: 15px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">❓ How to Play Minesweeper</h2>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div>
-                        <h3 style="color: #eee; margin-bottom: 10px;">🎯 Objective</h3>
-                        <p style="color: #aaa;">Clear the board without detonating any mines. Use numbers to deduce mine locations.</p>
-                    </div>
-
-                    <div>
-                        <h3 style="color: #eee; margin-bottom: 10px;">🖱️ Controls</h3>
-                        <ul style="color: #aaa; list-style: none; padding: 0;">
-                            <li>✅ <strong>Left click</strong>: Reveal a cell</li>
-                            <li>🚩 <strong>Right click</strong>: Place/remove flag</li>
-                            <li>🔄 <strong>Double click</strong>: Quick reveal (if flagged correctly)</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 style="color: #eee; margin-bottom: 10px;">📊 Scoring</h3>
-                        <ul style="color: #aaa; list-style: none; padding: 0;">
-                            <li>⭐ Base points based on difficulty</li>
-                            <li>⚡ Bonus for faster completion</li>
-                            <li>🎯 Penalty for using hints</li>
-                            <li>🏆 Only winning games get scores</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div style="margin-top: 20px; padding: 15px; background: rgba(0,173,181,0.1); border-radius: 10px;">
-                    <h4 style="color: #00ADB5; margin-bottom: 10px;">Number Meanings:</h4>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <span style="padding: 5px 10px; background: #393E46; border-radius: 5px;">1 = 💣 Nearby</span>
-                        <span style="padding: 5px 10px; background: #393E46; border-radius: 5px;">2 = 💣💣 Nearby</span>
-                        <span style="padding: 5px 10px; background: #393E46; border-radius: 5px;">... and so on</span>
-                        <span style="padding: 5px 10px; background: #393E46; border-radius: 5px;">Empty = Safe area</span>
                     </div>
                 </div>
             </div>

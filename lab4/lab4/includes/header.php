@@ -63,7 +63,7 @@ if ($is_in_game_folder) {
                 <li>
                     <a href="<?php echo $path_prefix; ?>game/index.php"
                             <?php echo ($current_page == 'game') ? 'class="active"' : ''; ?>>
-                        Minesweeper 🎮
+                        Minesweeper
                     </a>
                 </li>
 

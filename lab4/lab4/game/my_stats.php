@@ -159,16 +159,6 @@ ob_start();
 
     <main class="main">
         <div class="container stats-container">
-            <div class="stats-header">
-                <h1 style="color: #00ADB5; margin-bottom: 10px;">
-                    📊 My Game Statistics
-                </h1>
-                <p style="color: #aaa;">Welcome back, <strong><?php echo htmlspecialchars($userName); ?></strong>! Here's your gaming progress.</p>
-                <div style="margin-top: 20px;">
-                    <a href="index.php" class="game-btn" style="display: inline-block; text-decoration: none;">🎮 Play Now</a>
-                    <a href="leaderboard.php" class="game-btn" style="display: inline-block; text-decoration: none; background: #393E46;">🏆 View Leaderboard</a>
-                </div>
-            </div>
 
             <!-- Общая статистика -->
             <div class="stat-card">
