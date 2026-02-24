@@ -368,13 +368,11 @@ ob_start();
     </head>
     <body>
     <?php
-    // Используем специальный header для админки
     include '../includes/header.php';
     ?>
 
     <main class="main">
         <div class="admin-container">
-            <!-- Хедер -->
             <div class="admin-header">
                 <div class="welcome-box">
                     <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['user_name']); ?>!</h1>
@@ -387,7 +385,7 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Статистика -->
+
             <div class="stats-grid">
                 <div class="stat-card" style="border-top: 4px solid #00ADB5;">
                     <div class="stat-number"><?php echo $stats['total_users']; ?></div>
@@ -422,7 +420,6 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Быстрые действия -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
                 <a href="messages.php" class="admin-btn btn-primary"> Manage Messages</a>
                 <a href="users.php" class="admin-btn btn-primary"> Manage Users</a>
@@ -430,9 +427,7 @@ ob_start();
                 <a href="../contact.php" class="admin-btn btn-secondary" target="_blank"> View Contact Form</a>
             </div>
 
-            <!-- Основной дашборд -->
             <div class="dashboard-grid">
-                <!-- Последние сообщения -->
                 <div class="dashboard-card">
                     <div class="card-header">
                         <div class="card-title">Recent Messages</div>
@@ -465,7 +460,6 @@ ob_start();
                     <?php endif; ?>
                 </div>
 
-                <!-- Последние пользователи -->
                 <div class="dashboard-card">
                     <div class="card-header">
                         <div class="card-title">Recent Users</div>
@@ -501,7 +495,6 @@ ob_start();
                     <?php endif; ?>
                 </div>
 
-                <!-- Последние работы -->
                 <div class="dashboard-card">
                     <div class="card-header">
                         <div class="card-title">Recent Works</div>
@@ -536,7 +529,6 @@ ob_start();
             </div>
 
 
-            <!-- Быстрая статистика -->
             <div class="quick-stats">
                 <div class="quick-stat">
                     <div class="quick-number"><?php echo $db->fetch("SELECT COUNT(*) as count FROM messages WHERE DATE(created_at) = CURDATE()")['count']; ?></div>

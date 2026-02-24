@@ -26,7 +26,6 @@ ob_start();
 ?>
 
     <div class="pure-css-gallery" id="gallery-container">
-        <!-- Сообщение для авторизованного пользователя -->
         <div style="text-align: center; margin-bottom: 20px;">
             <p style="color: #00ADB5; font-size: 16px;">
                 Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!
@@ -43,7 +42,6 @@ ob_start();
                 </p>
             </div>
         <?php else: ?>
-            <!-- Скрытые радио-кнопки для каждого слайда -->
             <?php foreach ($works as $index => $work): ?>
                 <input type="radio" name="gallery"
                        id="slide-<?php echo $index + 1; ?>"
@@ -61,8 +59,6 @@ ob_start();
                                 </div>
                             <?php endfor; ?>
                         </div>
-
-                        <!-- Информация о работе -->
                         <div class="work-info">
                             <h3><?php echo htmlspecialchars($work['title']); ?></h3>
                             <p><?php echo htmlspecialchars($work['description']); ?></p>
@@ -80,15 +76,12 @@ ob_start();
                 <?php endforeach; ?>
             </div>
 
-            <!-- Навигация -->
             <div class="gallery-controls">
                 <div class="nav-buttons <?php echo $total_slides <= 1 ? 'single-slide' : ''; ?>">
-                    <!-- Кнопка "Назад" -->
                     <?php if ($total_slides > 1): ?>
                         <button class="nav-btn prev" onclick="prevSlide()">‹</button>
                     <?php endif; ?>
 
-                    <!-- Навигационные точки -->
                     <div class="nav-dots">
                         <?php foreach ($works as $index => $work): ?>
                             <button class="nav-dot dot-<?php echo $index + 1; ?>
@@ -99,16 +92,14 @@ ob_start();
                         <?php endforeach; ?>
                     </div>
 
-                    <!-- Кнопка "Вперед" -->
                     <?php if ($total_slides > 1): ?>
                         <button class="nav-btn next" onclick="nextSlide()">›</button>
                     <?php endif; ?>
                 </div>
 
-                <!-- Информация для пользователя -->
                 <div style="text-align: center; margin-top: 20px; padding: 10px; background: rgba(0,173,181,0.1); border-radius: 8px;">
                     <p style="color: #00ADB5; font-size: 14px; margin: 0;">
-                        🔒 Exclusive content for registered users
+                        Exclusive content for registered users
                     </p>
                 </div>
             </div>
@@ -222,7 +213,7 @@ $custom_css = '
     }
 </style>';
 
-// Добавляем JavaScript для управления слайдером
+// тут слайдер на js
 $custom_scripts = '
 <script>
 const totalSlides = ' . $total_slides . ';

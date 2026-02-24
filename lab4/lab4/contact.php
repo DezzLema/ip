@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = true;
         $_SESSION['contact_success'] = "Thank you, $name! Your message has been sent.";
 
-        // редирект, чтобы избежать повторной отправки при обновлении
+        // редирект чтобы избежать повторной отправки при обновлении
         header('Location: contact.php?success=1');
         exit;
     }
@@ -233,7 +233,7 @@ ob_start();
     </main>
 
 <?php
-// КЛИЕНТСКАЯ ВАЛИДАЦИЯ (JavaScript)
+// клиентская валидация
 $custom_scripts = '
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Проверка honeypot поля
     honeypot.addEventListener("input", function() {
         if (honeypot.value) {
-            // Бот заполнил скрытое поле - блокируем отправку
+            // блокируем отправку
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
                 alert("Submission blocked - suspicious activity detected");

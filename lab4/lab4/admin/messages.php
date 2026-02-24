@@ -2,7 +2,6 @@
 require_once '../includes/config.php';
 require_once '../includes/db_connection.php';
 
-// Проверка авторизации и прав админа
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../login.php?redirect=admin');
     exit;
@@ -51,7 +50,6 @@ $where_clause = $where_conditions ? "WHERE " . implode(" AND ", $where_condition
 $limit = (int)$per_page;
 $offset_value = (int)$offset;
 
-// Для LIMIT и OFFSET не используем параметры, так как они должны быть числами
 $query = "
     SELECT m.*, u.username 
     FROM messages m 
@@ -63,7 +61,7 @@ $query = "
 
 $messages = $db->fetchAll($query, $params);
 
-// Получаем общее количество для пагинации
+
 $total_count = $db->fetch("
     SELECT COUNT(*) as total 
     FROM messages m 
@@ -73,7 +71,7 @@ $total_count = $db->fetch("
 
 $total_pages = ceil($total_count / $per_page);
 
-// Обработка действий
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['mark_all_read'])) {
         $db->query("UPDATE messages SET is_read = 1 WHERE is_read = 0");
@@ -305,7 +303,6 @@ ob_start();
 
     <main class="main">
         <div class="admin-container">
-            <!-- Хедер админки -->
             <div class="admin-header">
                 <div>
                     <h1 style="color: #00ADB5; margin-bottom: 10px;">Messages Management</h1>
@@ -337,7 +334,6 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Кнопки действий -->
             <div class="action-buttons">
                 <form method="POST" style="display: inline;">
                     <button type="submit" name="mark_all_read" class="action-btn btn-primary"
@@ -357,7 +353,6 @@ ob_start();
                 <a href="logout.php" class="action-btn btn-secondary" style="background-color: #ff6b6b;">Logout</a>
             </div>
 
-            <!-- Сообщения -->
             <div style="margin-top: 30px;">
                 <?php if (empty($messages)): ?>
                     <div class="empty-state">
@@ -444,7 +439,6 @@ ob_start();
                         </div>
                     <?php endforeach; ?>
 
-                    <!-- Пагинация -->
                     <?php if ($total_pages > 1): ?>
                         <div class="pagination">
                             <?php if ($page_num > 1): ?>

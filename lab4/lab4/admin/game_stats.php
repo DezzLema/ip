@@ -1,11 +1,9 @@
 <?php
-// admin/game_stats.php
 
 require_once '../includes/config.php';
 require_once '../includes/db_connection.php';
 require_once '../includes/game_functions.php';
 
-// Проверка авторизации и прав админа
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../login.php?redirect=admin');
     exit;
@@ -276,7 +274,6 @@ ob_start();
 
     <main class="main">
         <div class="admin-container">
-            <!-- Хедер -->
             <div class="admin-header">
                 <div>
                     <h1>🎮 Game Statistics Admin</h1>
@@ -290,7 +287,6 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Статистика за сегодня -->
             <div class="stats-overview">
                 <div class="stat-card">
                     <div class="stat-icon">🎮</div>
@@ -330,9 +326,8 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Основной дашборд -->
+
             <div class="dashboard-grid">
-                <!-- Топ игроков -->
                 <div class="dashboard-card">
                     <div class="card-header">
                         <div class="card-title">🏆 Top Players (All Time)</div>
@@ -385,7 +380,6 @@ ob_start();
                     <?php endif; ?>
                 </div>
 
-                <!-- Недавние игры -->
                 <div class="dashboard-card">
                     <div class="card-header">
                         <div class="card-title">🕐 Recent Games</div>
@@ -444,7 +438,6 @@ ob_start();
                     <?php endif; ?>
                 </div>
 
-                <!-- График активности -->
                 <div class="dashboard-card" style="grid-column: span 2;">
                     <div class="card-header">
                         <div class="card-title">📈 Activity Last 30 Days</div>
@@ -456,7 +449,6 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Фильтры и экспорт -->
             <div class="dashboard-card" style="margin-top: 20px;">
                 <div class="card-header">
                     <div class="card-title">🔍 Advanced Statistics</div>
@@ -488,7 +480,6 @@ ob_start();
                     </button>
                 </div>
 
-                <!-- Подробная статистика -->
                 <div style="overflow-x: auto;">
                     <table>
                         <thead>
@@ -525,7 +516,6 @@ ob_start();
                     </table>
                 </div>
 
-                <!-- Пагинация -->
                 <div class="pagination">
                     <button class="page-btn active">1</button>
                     <button class="page-btn">2</button>
@@ -538,14 +528,14 @@ ob_start();
     </main>
 
     <script>
-        // График активности
+
         document.addEventListener('DOMContentLoaded', function() {
             const ctx = document.getElementById('activityChart').getContext('2d');
 
-            // Данные из PHP
+
             const activityData = <?php echo json_encode($globalStats); ?>;
 
-            // Подготавливаем данные для графика
+
             const labels = activityData.map(stat => {
                 const date = new Date(stat.date);
                 return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -554,7 +544,6 @@ ob_start();
             const gamesData = activityData.map(stat => stat.total_games).reverse();
             const winsData = activityData.map(stat => stat.games_won).reverse();
 
-            // Создаем график
             new Chart(ctx, {
                 type: 'line',
                 data: {

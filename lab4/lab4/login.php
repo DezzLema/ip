@@ -124,7 +124,7 @@ ob_start();
     </main>
 
 <?php
-// КЛИЕНТСКАЯ ВАЛИДАЦИЯ (JavaScript)
+// клиентская валидация
 $custom_scripts = '
 <script>
 document.addEventListener("DOMContentLoaded", function() {

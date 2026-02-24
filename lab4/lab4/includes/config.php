@@ -48,8 +48,4 @@ function getDBConnection() {
         die("Database connection failed: " . $e->getMessage());
     }
 }
-
-// Проверка подключения (для отладки)
-// $pdo = getDBConnection();
-// echo "Connected successfully!";
 ?>

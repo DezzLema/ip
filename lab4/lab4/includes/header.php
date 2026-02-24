@@ -1,5 +1,4 @@
 <?php
-// includes/header.php
 
 $current_page = isset($page) ? $page : basename($_SERVER['PHP_SELF'], '.php');
 
@@ -59,7 +58,6 @@ if ($is_in_game_folder) {
                     </a>
                 </li>
 
-                <!-- Пункт меню для игры -->
                 <li>
                     <a href="<?php echo $path_prefix; ?>game/index.php"
                             <?php echo ($current_page == 'game') ? 'class="active"' : ''; ?>>
