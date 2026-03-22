@@ -26,13 +26,6 @@ ob_start();
 ?>
 
     <div class="pure-css-gallery" id="gallery-container">
-        <div style="text-align: center; margin-bottom: 20px;">
-            <p style="color: #00ADB5; font-size: 16px;">
-                Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!
-                You're viewing exclusive content.
-            </p>
-        </div>
-
         <?php if (empty($works)): ?>
             <div style="text-align: center; padding: 100px 20px;">
                 <div style="font-size: 80px; margin-bottom: 20px; color: #00ADB5; opacity: 0.5;">🎨</div>
@@ -95,12 +88,6 @@ ob_start();
                     <?php if ($total_slides > 1): ?>
                         <button class="nav-btn next" onclick="nextSlide()">›</button>
                     <?php endif; ?>
-                </div>
-
-                <div style="text-align: center; margin-top: 20px; padding: 10px; background: rgba(0,173,181,0.1); border-radius: 8px;">
-                    <p style="color: #00ADB5; font-size: 14px; margin: 0;">
-                        Exclusive content for registered users
-                    </p>
                 </div>
             </div>
         <?php endif; ?>
