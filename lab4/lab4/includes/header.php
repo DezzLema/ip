@@ -33,6 +33,7 @@ if ($is_in_game_folder) {
     <?php if (isset($page) && $page === 'index'): ?>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <?php endif; ?>
+    
 </head>
 <body>
 <header class="header">

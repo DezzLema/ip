@@ -305,6 +305,8 @@
     line-height: 1.6;
 }
 
+
+
 /* адаптив */
 @media (max-width: 1024px) {
     #minesweeper-game {
