@@ -65,7 +65,7 @@ ob_start();
                 <?php endif; ?>
 
                 <?php if ($error): ?>
-                    <div class="error-message">
+                    <div class="error-message" style="background-color: rgba(255,107,107,0.1); color: #ff6b6b; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(255,107,107,0.3);">
                         <?php echo htmlspecialchars($error); ?>
                     </div>
                 <?php endif; ?>
@@ -124,104 +124,10 @@ ob_start();
     </main>
 
 <?php
-// клиентская валидация
-$custom_scripts = '
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("login-form");
-    const username = document.getElementById("username");
-    const password = document.getElementById("password");
-    
-    // Функция для показа ошибки
-    function showError(input, message) {
-        const formGroup = input.closest(".form-group");
-        let errorDiv = formGroup.querySelector(".error-text");
-        
-        if (!errorDiv) {
-            errorDiv = document.createElement("div");
-            errorDiv.className = "error-text";
-            errorDiv.style.color = "#ff6b6b";
-            errorDiv.style.fontSize = "14px";
-            errorDiv.style.marginTop = "5px";
-            formGroup.appendChild(errorDiv);
-        }
-        
-        errorDiv.textContent = message;
-        input.classList.add("error");
-    }
-    
-    // Функция для очистки ошибки
-    function clearError(input) {
-        const formGroup = input.closest(".form-group");
-        const errorDiv = formGroup.querySelector(".error-text");
-        
-        if (errorDiv) {
-            errorDiv.remove();
-        }
-        
-        input.classList.remove("error");
-    }
-    
-    // Валидация username/email
-    username.addEventListener("input", function() {
-        const value = username.value.trim();
-        if (!value) {
-            showError(username, "Username or email is required");
-        } else if (value.length > 100) {
-            showError(username, "Must not exceed 100 characters");
-        } else {
-            clearError(username);
-        }
-    });
-    
-    // Валидация пароля
-    password.addEventListener("input", function() {
-        const value = password.value;
-        if (!value) {
-            showError(password, "Password is required");
-        } else if (value.length > 100) {
-            showError(password, "Password must not exceed 100 characters");
-        } else {
-            clearError(password);
-        }
-    });
-    
-    // Финальная проверка перед отправкой
-    form.addEventListener("submit", function(e) {
-        let hasErrors = false;
-        
-        if (!username.value.trim()) {
-            showError(username, "Username or email is required");
-            hasErrors = true;
-        }
-        
-        if (!password.value) {
-            showError(password, "Password is required");
-            hasErrors = true;
-        }
-        
-        if (hasErrors) {
-            e.preventDefault();
-            
-            // Прокрутка к первой ошибке
-            const firstError = form.querySelector(".error");
-            if (firstError) {
-                firstError.scrollIntoView({ 
-                    behavior: "smooth", 
-                    block: "center" 
-                });
-                firstError.focus();
-            }
-            
-            return false;
-        }
-    });
-});
-</script>';
-
 $content = ob_get_clean();
 include 'includes/header.php';
 echo $content;
-echo $custom_scripts;
+// Подключаем внешний JavaScript файл
+echo '<script src="scripts/login.js"></script>';
 include 'includes/footer.php';
 ?>

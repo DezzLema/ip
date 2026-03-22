@@ -1,4 +1,3 @@
-// scripts/contact.js
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("contact-form");
     const nameInput = document.getElementById("name");
