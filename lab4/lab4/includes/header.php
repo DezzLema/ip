@@ -55,9 +55,6 @@ if ($is_in_game_folder) {
                     <a href="<?php echo $path_prefix; ?>works.php"
                             <?php echo ($current_page == 'works') ? 'class="active"' : ''; ?>>
                         My works
-                        <?php if (!isset($_SESSION['user_id'])): ?>
-                            <span style="color: #ff6b6b; font-size: 12px; margin-left: 5px;">🔒</span>
-                        <?php endif; ?>
                     </a>
                 </li>
 
