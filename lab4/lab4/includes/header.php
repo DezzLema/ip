@@ -27,6 +27,9 @@ if ($is_in_game_folder) {
     <?php if (isset($page) && $page === 'works'): ?>
         <link rel="stylesheet" href="<?php echo $path_prefix; ?>styles/works.css">
     <?php endif; ?>
+    <?php if (isset($page) && $page === 'contact'): ?>
+        <link rel="stylesheet" href="<?php echo $path_prefix; ?>styles/contact.css">
+    <?php endif; ?>
     <?php if (isset($page) && $page === 'index'): ?>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <?php endif; ?>
