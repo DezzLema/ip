@@ -380,7 +380,7 @@ class MinesweeperGame {
 
         modal.innerHTML = `
             <div class="modal-content">
-                <h2>${isWin ? '🎉 Congratulations!' : '💥 Game Over'}</h2>
+                <h2>${isWin ? 'Congratulations!' : 'Game Over'}</h2>
                 <p>
                     ${isWin ? 'You cleared the minefield!' : 'You hit a mine!'}<br><br>
                     <strong>Time:</strong> ${timeFormatted}<br>
@@ -389,7 +389,7 @@ class MinesweeperGame {
                     ${isWin ? `<strong>Score:</strong> ${score}<br>` : ''}
                 </p>
                 <div style="display: flex; gap: 15px; justify-content: center;">
-                    <button id="play-again-btn" class="game-btn">🔄 Play Again</button>
+                    <button id="play-again-btn" class="game-btn">Play Again</button>
                     <button id="close-modal-btn" class="game-btn" style="background: #393E46;">✕ Close</button>
                 </div>
             </div>
@@ -506,11 +506,11 @@ class MinesweeperGame {
         if (this.gameState === 'paused') {
             this.gameState = 'playing';
             this.startTimer();
-            this.elements.pauseBtn.textContent = '⏸️ Pause';
+            this.elements.pauseBtn.textContent = 'Pause';
         } else if (this.gameState === 'playing') {
             this.gameState = 'paused';
             this.stopTimer();
-            this.elements.pauseBtn.textContent = '▶️ Resume';
+            this.elements.pauseBtn.textContent = 'Resume';
         }
 
         this.updateUI();
@@ -543,7 +543,7 @@ class MinesweeperGame {
         this.elements.gameStatus.textContent = statusMap[this.gameState] || 'Ready';
 
         // Подсказки
-        this.elements.hintBtn.textContent = `💡 Hint (${this.hintsLeft} left)`;
+        this.elements.hintBtn.textContent = `Hint (${this.hintsLeft} left)`;
         this.elements.hintBtn.disabled = this.hintsLeft <= 0 || this.gameState !== 'playing';
 
         // Кнопка паузы
