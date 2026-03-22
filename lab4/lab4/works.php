@@ -107,111 +107,6 @@ ob_start();
     </div>
 
 <?php
-// Добавляем кастомные стили
-$custom_css = '
-<style>
-    /* Стили для информации о работе */
-    .work-info {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 15px 20px;
-        border-radius: 10px;
-        backdrop-filter: blur(5px);
-        z-index: 10;
-    }
-    
-    .work-info h3 {
-        color: #00ADB5;
-        margin-bottom: 8px;
-        font-size: 18px;
-    }
-    
-    .work-info p {
-        color: #eee;
-        font-size: 14px;
-        margin-bottom: 5px;
-        line-height: 1.4;
-    }
-    
-    .work-category {
-        display: inline-block;
-        background: rgba(0, 173, 181, 0.2);
-        color: #00ADB5;
-        padding: 3px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-    
-    /* Кнопки навигации */
-    .nav-btn {
-        background: rgba(0, 173, 181, 0.2);
-        color: #00ADB5;
-        border: 2px solid rgba(0, 173, 181, 0.3);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 24px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-btn:hover {
-        background: #00ADB5;
-        color: white;
-        transform: scale(1.1);
-        box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
-    }
-    
-    .nav-btn:active {
-        transform: scale(0.95);
-    }
-    
-    .nav-dot {
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0;
-        color: transparent;
-        padding: 0;
-    }
-    
-    .nav-dot:hover {
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(1.2);
-    }
-    
-    .nav-dot.active {
-        background: #00ADB5 !important;
-        transform: scale(1.3);
-        box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.2);
-        animation: pulse 2s infinite;
-    }
-    
-    /* Для одного слайда центрируем точки */
-    .nav-buttons.single-slide {
-        justify-content: center !important;
-    }
-    
-    /* Стиль для защищенного контента */
-    .protected-content {
-        background: linear-gradient(135deg, rgba(0,173,181,0.1) 0%, rgba(34,40,49,0.8) 100%);
-        border: 2px solid #00ADB5;
-        padding: 20px;
-        border-radius: 15px;
-        margin-bottom: 30px;
-    }
-</style>';
 
 // тут слайдер на js
 $custom_scripts = '
@@ -332,7 +227,6 @@ document.querySelectorAll(".nav-dot").forEach(dot => {
 $hide_divider = true;
 $content = ob_get_clean();
 include 'includes/header.php';
-echo $custom_css;
 echo $content;
 echo $custom_scripts;
 include 'includes/footer.php';
