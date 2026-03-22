@@ -160,9 +160,9 @@ ob_start();
     <main class="main">
         <div class="container stats-container">
 
-            <!-- Общая статистика -->
+
             <div class="stat-card">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">📈 Overall Statistics</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Overall Statistics</h2>
                 <div class="stats-grid">
                     <div>
                         <div class="stat-value"><?php echo $stats['overall']['total_games'] ?? 0; ?></div>
@@ -202,11 +202,11 @@ ob_start();
 
             <!-- Статистика по сложностям -->
             <div class="stat-card" style="margin-top: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">🎯 Statistics by Difficulty</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Statistics by Difficulty</h2>
 
                 <?php if (empty($stats['by_difficulty'])): ?>
                     <div class="empty-state">
-                        <div class="empty-icon">📊</div>
+                        <div class="empty-icon"></div>
                         <p>No games played yet. Start playing to see your statistics!</p>
                         <a href="index.php" class="game-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">🎮 Play First Game</a>
                     </div>
@@ -259,11 +259,11 @@ ob_start();
 
             <!-- Последние игры -->
             <div class="stat-card" style="margin-top: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">🕐 Recent Games</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Recent Games</h2>
 
                 <?php if (empty($stats['recent_games'])): ?>
                     <div class="empty-state">
-                        <div class="empty-icon">🕹️</div>
+                        <div class="empty-icon"></div>
                         <p>No games played yet.</p>
                     </div>
                 <?php else: ?>

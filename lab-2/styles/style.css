@@ -205,6 +205,11 @@ img {
 .footer_list li a {
     font-size: 18px;
     font-weight: 500;
+    color: #f3f3f3;
+}
+
+.footer_list .chet1 li a {
+    color: #ec0e06;
 }
 
 .social {

@@ -14,3 +14,27 @@ Session user_id: 2
 Request user_id: 2
 Game data prepared: {"difficulty":"beginner","time":28,"moves":71,"flags":10,"result":"won"}
 Game saved, result: {"session_id":"2","score":2330}
+2026-02-28 17:52:40 - Save game request
+Request method: POST
+Content type: application/json
+Input data: {"difficulty":"beginner","time":20,"moves":71,"flags":10,"result":"won","userId":2}
+Session user_id: 2
+Request user_id: 2
+Game data prepared: {"difficulty":"beginner","time":20,"moves":71,"flags":10,"result":"won"}
+Game saved, result: {"session_id":"3","score":2338}
+2026-02-28 17:52:40 - Save game request
+Request method: POST
+Content type: application/json
+Input data: {"difficulty":"beginner","time":20,"moves":71,"flags":10,"result":"won","userId":2}
+Session user_id: 2
+Request user_id: 2
+Game data prepared: {"difficulty":"beginner","time":20,"moves":71,"flags":10,"result":"won"}
+Game saved, result: {"session_id":"4","score":2338}
+2026-03-11 05:48:51 - Save game request
+Request method: POST
+Content type: application/json
+Input data: {"difficulty":"beginner","time":22,"moves":71,"flags":10,"result":"won","userId":2}
+Session user_id: 2
+Request user_id: 2
+Game data prepared: {"difficulty":"beginner","time":22,"moves":71,"flags":10,"result":"won"}
+Game saved, result: {"session_id":"5","score":2336}

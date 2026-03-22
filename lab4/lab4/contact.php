@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Проверка на быструю отправку (анти-спам)
+    // анти спам
     if (isset($_SESSION['last_submit_time'])) {
         $time_diff = time() - $_SESSION['last_submit_time'];
         if ($time_diff < 10) { // 10 секунд между отправками
@@ -407,7 +407,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Показываем индикатор загрузки
         const submitBtn = form.querySelector(".send-btn");
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = \'Sending... <span class="btn-icon">⏳</span>\';
+        submitBtn.innerHTML = \'Sending... <span class="btn-icon">---</span>\';
         submitBtn.disabled = true;
         
         // Автоматическое восстановление кнопки через 10 секунд (на случай ошибки)

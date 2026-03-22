@@ -1,8 +1,6 @@
-// game/minesweeper.js
-
 class MinesweeperGame {
     constructor(config) {
-        // Конфигурация игры
+        // конфиг
         this.config = {
             difficulty: 'beginner',
             width: 9,
@@ -329,7 +327,7 @@ class MinesweeperGame {
         console.log('isLoggedIn:', gameConfig.isLoggedIn);
         console.log('userId:', gameConfig.userId);
 
-        if (!gameConfig.isLoggedIn) { // Изменено здесь
+        if (!gameConfig.isLoggedIn) {
             console.log('User not logged in, score not saved');
             return;
         }
@@ -373,7 +371,6 @@ class MinesweeperGame {
 
     //модальное окно в конце игры
     showGameOverModal(isWin) {
-        // Создаем модальное окно
         const modal = document.createElement('div');
         modal.className = 'modal';
         modal.style.display = 'flex';
@@ -636,5 +633,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Делаем глобально доступным для отладки
     window.minesweeperGame = game;
 
-    console.log('Minesweeper game initialized!');
+    console.log('инициализация прошла успешно');
 });
