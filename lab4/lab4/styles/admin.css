@@ -33,24 +33,19 @@
 .admin-actions {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap;
 }
 
 .admin-btn {
     padding: 12px 25px;
     border-radius: 8px;
     border: none;
-    cursor: pointer;
     font-weight: 600;
-    transition: all 0.3s ease;
-    text-decoration: none;
     display: inline-block;
     text-align: center;
 }
 
 .btn-primary {
     background: #00ADB5;
-    color: white;
 }
 
 .btn-secondary {
@@ -82,10 +77,6 @@
     overflow: hidden;
 }
 
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
 
 .stat-icon {
     position: absolute;
@@ -143,9 +134,6 @@
     text-decoration: none;
 }
 
-.card-link:hover {
-    text-decoration: underline;
-}
 
 .activity-item {
     display: flex;

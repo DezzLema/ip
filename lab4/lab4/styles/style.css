@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* CSS Reset */
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +11,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Base Styles */
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #222831;
@@ -28,10 +28,6 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
-    color: #00ADB5;
-}
-
 ul {
     list-style: none;
 }
@@ -42,7 +38,7 @@ img {
     display: block;
 }
 
-/* Container */
+
 .container {
     max-width: 1440px;
     width: 100%;
@@ -50,7 +46,7 @@ img {
     padding: 0 20px;
 }
 
-/* Header */
+
 .header {
     padding: 48px 0 24px;
 }
@@ -84,9 +80,6 @@ img {
     transition: width 0.3s ease;
 }
 
-.header_list li a:hover::after {
-    width: 100%;
-}
 
 .line {
     width: 100%;
@@ -94,7 +87,7 @@ img {
     opacity: 0.3;
 }
 
-/* Main Content */
+
 .main {
     flex: 1;
     padding: 100px 0;
@@ -152,21 +145,11 @@ img {
     background-color: #00ADB5;
 }
 
-.hire:hover {
-    background-color: #00969d;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 173, 181, 0.2);
-}
 
 .cv {
     background-color: #393E46;
 }
 
-.cv:hover {
-    background-color: #4a505a;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(57, 62, 70, 0.2);
-}
 
 .image-container {
     flex: 1;
@@ -181,12 +164,12 @@ img {
     height: auto;
 }
 
-/* Divider */
+
 .divider {
     padding: 0 20px;
 }
 
-/* Footer */
+
 .footer {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 60px 0 40px;
@@ -234,14 +217,7 @@ img {
     transition: transform 0.3s ease;
 }
 
-.social-link:hover {
-    background-color: #00ADB5;
-    transform: translateY(-5px);
-}
 
-.social-link:hover .social-icon {
-    transform: scale(1.1);
-}
 
 .copyright {
     text-align: center;
@@ -251,7 +227,7 @@ img {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
     .main .container {
         flex-direction: column;
@@ -326,7 +302,7 @@ img {
     }
 }
 
-/* About Page Specific Styles */
+
 .about-main {
     padding: 80px 0 100px;
     background-size: cover;
@@ -412,10 +388,6 @@ img {
     transition: all 0.3s ease;
 }
 
-.skills-list li:hover {
-    background-color: rgba(0, 173, 181, 0.15);
-    transform: translateX(5px);
-}
 
 .skills-list li::before {
     content: '✓';
@@ -440,15 +412,8 @@ img {
     text-align: center;
 }
 
-.contact-btn:hover {
-    background-color: transparent;
-    border-color: #00ADB5;
-    color: #00ADB5;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 173, 181, 0.2);
-}
 
-/* Responsive for About Page */
+
 @media (max-width: 768px) {
     .about-content {
         padding: 25px 20px;
@@ -491,7 +456,7 @@ img {
     }
 }
 
-/* ========== CONTACT PAGE STYLES ========== */
+
 .contact-main {
     padding: 80px 0 100px;
     min-height: calc(100vh - 400px);
@@ -521,7 +486,7 @@ img {
     margin-right: auto;
 }
 
-/* Contact Form */
+
 .contact-form {
     background-color: rgba(57, 62, 70, 0.6);
     padding: 40px;
@@ -591,22 +556,15 @@ img {
     max-width: 300px;
 }
 
-.send-btn:hover {
-    background-color: #00969d;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 173, 181, 0.2);
-}
 
 .btn-icon {
     font-size: 20px;
     transition: transform 0.3s ease;
 }
 
-.send-btn:hover .btn-icon {
-    transform: translateX(5px);
-}
 
-/* Contact Info */
+
+
 .contact-info {
     margin-top: 60px;
 }
@@ -635,11 +593,6 @@ img {
     border: 1px solid transparent;
 }
 
-.contact-item:hover {
-    border-color: #00ADB5;
-    transform: translateY(-5px);
-    background-color: rgba(57, 62, 70, 0.8);
-}
 
 .contact-icon {
     font-size: 40px;
@@ -657,7 +610,7 @@ img {
     font-size: 16px;
 }
 
-/* Success Message */
+
 .success-message {
     display: none;
     background-color: rgba(0, 173, 181, 0.1);
@@ -675,7 +628,6 @@ img {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive for Contact Page */
 @media (max-width: 768px) {
     .contact-form {
         padding: 30px 20px;
@@ -713,7 +665,7 @@ img {
     }
 }
 
-/* Активная ссылка в навигации */
+
 .header_list li a.active {
     color: #00ADB5;
     position: relative;
@@ -729,16 +681,13 @@ img {
     background-color: #00ADB5;
 }
 
-/* Кнопка выхода */
+
 .logout-btn {
     color: #ff6b6b !important;
 }
 
-.logout-btn:hover {
-    color: #ff5252 !important;
-}
 
-/* Сообщения */
+
 .error-message {
     background-color: rgba(255, 107, 107, 0.1);
     color: #ff6b6b;

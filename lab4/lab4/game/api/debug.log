@@ -38,3 +38,11 @@ Session user_id: 2
 Request user_id: 2
 Game data prepared: {"difficulty":"beginner","time":22,"moves":71,"flags":10,"result":"won"}
 Game saved, result: {"session_id":"5","score":2336}
+2026-03-24 23:11:46 - Save game request
+Request method: POST
+Content type: application/json
+Input data: {"difficulty":"beginner","time":42,"moves":71,"flags":10,"result":"won","userId":2}
+Session user_id: 2
+Request user_id: 2
+Game data prepared: {"difficulty":"beginner","time":42,"moves":71,"flags":10,"result":"won"}
+Game saved, result: {"session_id":"6","score":2316}
