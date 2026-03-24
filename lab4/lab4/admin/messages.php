@@ -133,11 +133,6 @@ ob_start();
                 background: rgba(57,62,70,0.6);
             }
 
-            .message-item:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            }
-
             .unread {
                 border-left: 4px solid #ff6b6b;
                 background: rgba(255,107,107,0.05);
@@ -208,10 +203,6 @@ ob_start();
                 display: inline-block;
             }
 
-            .filter-btn:hover, .filter-btn.active {
-                background: #00ADB5;
-                color: white;
-            }
 
             .search-box {
                 display: flex;
@@ -280,10 +271,6 @@ ob_start();
                 transition: all 0.3s ease;
             }
 
-            .page-link:hover, .page-link.active {
-                background: #00ADB5;
-                color: white;
-            }
 
             .empty-state {
                 text-align: center;

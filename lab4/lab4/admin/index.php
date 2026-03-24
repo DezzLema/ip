@@ -103,7 +103,7 @@ ob_start();
 
 
             <div class="stats-grid">
-                <div class="stat-card" style="border-top: 4px solid #00ADB5;">
+                <div class="stat-card">
                     <div class="stat-number"><?php echo $stats['total_users']; ?></div>
                     <div class="stat-label">Количество пользователей</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -111,7 +111,7 @@ ob_start();
                     </div>
                 </div>
 
-                <div class="stat-card" style="border-top: 4px solid #ff6b6b;">
+                <div class="stat-card">
                     <div class="stat-number"><?php echo $stats['unread_messages']; ?></div>
                     <div class="stat-label">Непрочитанных сообщений</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -119,7 +119,7 @@ ob_start();
                     </div>
                 </div>
 
-                <div class="stat-card" style="border-top: 4px solid #28a745;">
+                <div class="stat-card">
                     <div class="stat-number"><?php echo $stats['published_works']; ?></div>
                     <div class="stat-label">Опубликованных работ</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
@@ -127,7 +127,7 @@ ob_start();
                     </div>
                 </div>
 
-                <div class="stat-card" style="border-top: 4px solid #ffc107;">
+                <div class="stat-card">
                     <div class="stat-number"><?php echo $stats['today_messages']; ?></div>
                     <div class="stat-label">Сообщений сегодня</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">

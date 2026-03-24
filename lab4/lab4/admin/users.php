@@ -111,9 +111,6 @@ ob_start();
                 font-weight: 600;
             }
 
-            tr:hover {
-                background: rgba(255,255,255,0.05);
-            }
 
             .form-group {
                 margin-bottom: 20px;
@@ -155,9 +152,7 @@ ob_start();
                 transition: all 0.3s ease;
             }
 
-            .send-btn:hover {
-                background: #0099a8;
-            }
+
 
             .btn-icon {
                 font-size: 18px;
@@ -191,9 +186,7 @@ ob_start();
                 margin-left: 10px;
             }
 
-            .contact-btn:hover {
-                background: #454b55;
-            }
+
 
             .stats-grid {
                 display: grid;
@@ -328,23 +321,23 @@ ob_start();
 
             <!-- Статистика -->
             <div class="stats-grid">
-                <div class="stat-box" style="border-top: 3px solid #00ADB5;">
+                <div class="stat-box">
                     <div class="stat-number"><?php echo count($users); ?></div>
                     <div class="stat-label">Всего пользователей</div>
                 </div>
-                <div class="stat-box" style="border-top: 3px solid #28a745;">
+                <div class="stat-box">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => $u['role'] == 'admin')); ?>
                     </div>
                     <div class="stat-label">Админы</div>
                 </div>
-                <div class="stat-box" style="border-top: 3px solid #ffc107;">
+                <div class="stat-box">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => $u['is_active'])); ?>
                     </div>
                     <div class="stat-label">Активные пользователи</div>
                 </div>
-                <div class="stat-box" style="border-top: 3px solid #ff6b6b;">
+                <div class="stat-box">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => !$u['is_active'])); ?>
                     </div>
