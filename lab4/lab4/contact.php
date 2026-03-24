@@ -135,18 +135,18 @@ ob_start();
                     </div>
                 <?php endif; ?>
 
-                <h1 class="contact-title">Got a project in mind?</h1>
-                <p class="contact-subtitle">Let's work together! Fill out the form below and I'll get back to you as soon as possible.</p>
+                <h1 class="contact-title">Есть интересный проект?</h1>
+                <p class="contact-subtitle">Давайте работать вместе! Заполните форму ниже, и я свяжусь с вами как можно скорее.</p>
 
                 <form class="contact-form" method="POST" action="contact.php" id="contact-form" novalidate>
                     <div class="form-group">
-                        <label for="name" class="form-label">Your Name *</label>
+                        <label for="name" class="form-label">Имя *</label>
                         <input
                                 type="text"
                                 id="name"
                                 name="name"
                                 class="form-input <?php echo isset($errors['name']) ? 'error' : ''; ?>"
-                                placeholder="Enter your name"
+                                placeholder="Введите свое имя"
                                 required
                                 value="<?php echo htmlspecialchars($form_data['name']); ?>"
                         >
@@ -158,13 +158,13 @@ ob_start();
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="form-label">Your Email *</label>
+                        <label for="email" class="form-label">Почта *</label>
                         <input
                                 type="email"
                                 id="email"
                                 name="email"
                                 class="form-input <?php echo isset($errors['email']) ? 'error' : ''; ?>"
-                                placeholder="Enter your email address"
+                                placeholder="Введите email"
                                 required
                                 value="<?php echo htmlspecialchars($form_data['email']); ?>"
                         >
@@ -176,12 +176,12 @@ ob_start();
                     </div>
 
                     <div class="form-group">
-                        <label for="message" class="form-label">Your Message *</label>
+                        <label for="message" class="form-label">Сообщение *</label>
                         <textarea
                                 id="message"
                                 name="message"
                                 class="form-textarea <?php echo isset($errors['message']) ? 'error' : ''; ?>"
-                                placeholder="Tell me about your project..."
+                                placeholder=""
                                 rows="6"
                                 required
                         ><?php echo htmlspecialchars($form_data['message']); ?></textarea>
@@ -191,7 +191,7 @@ ob_start();
                             </div>
                         <?php endif; ?>
                         <div class="char-counter" style="color: #aaa; font-size: 13px; margin-top: 5px; text-align: right;">
-                            <span id="char-count"><?php echo strlen($form_data['message']); ?></span>/2000 characters
+                            <span id="char-count"><?php echo strlen($form_data['message']); ?></span>/2000 символов
                         </div>
                     </div>
 
@@ -200,13 +200,13 @@ ob_start();
                     </div>
 
                     <button type="submit" class="send-btn">
-                        Send Message
+                        Отправить сообщение
                         <span class="btn-icon">→</span>
                     </button>
                 </form>
 
                 <div class="contact-info">
-                    <h2>Other Ways to Reach Me</h2>
+                    <h2>Другие контакты</h2>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-text">
@@ -216,14 +216,14 @@ ob_start();
                         </div>
                         <div class="contact-item">
                             <div class="contact-text">
-                                <h3>Phone</h3>
-                                <p>+1 (555) 123-4567</p>
+                                <h3>Телефон</h3>
+                                <p>+7 (927) 834-9353</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-text">
-                                <h3>Location</h3>
-                                <p>San Francisco, CA</p>
+                                <h3>Город</h3>
+                                <p>Россия, Москва</p>
                             </div>
                         </div>
                     </div>

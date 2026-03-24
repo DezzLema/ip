@@ -92,13 +92,12 @@ ob_start();
         <div class="admin-container">
             <div class="admin-header">
                 <div class="welcome-box">
-                    <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['user_name']); ?>!</h1>
-                    <p>Here's what's happening with your site today.</p>
+                    <h1>Добро пожаловать, <?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['user_name']); ?>!</h1>
                 </div>
 
                 <div class="admin-actions">
-                    <a href="../index.php" class="admin-btn btn-secondary" target="_blank">🌐 View Site</a>
-                    <a href="logout.php" class="admin-btn btn-danger">🚪 Logout</a>
+                    <a href="../index.php" class="admin-btn btn-secondary" target="_blank">Перейти на сайт</a>
+                    <a href="logout.php" class="admin-btn btn-danger">Выход</a>
                 </div>
             </div>
 
@@ -106,7 +105,7 @@ ob_start();
             <div class="stats-grid">
                 <div class="stat-card" style="border-top: 4px solid #00ADB5;">
                     <div class="stat-number"><?php echo $stats['total_users']; ?></div>
-                    <div class="stat-label">Total Users</div>
+                    <div class="stat-label">Количество пользователей</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
                         <?php echo $stats['admin_users']; ?> admins • <?php echo $stats['active_users']; ?> active
                     </div>
@@ -114,7 +113,7 @@ ob_start();
 
                 <div class="stat-card" style="border-top: 4px solid #ff6b6b;">
                     <div class="stat-number"><?php echo $stats['unread_messages']; ?></div>
-                    <div class="stat-label">Unread Messages</div>
+                    <div class="stat-label">Непрочитанных сообщений</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
                         <?php echo $stats['total_messages']; ?> total • <?php echo $stats['today_messages']; ?> today
                     </div>
@@ -122,7 +121,7 @@ ob_start();
 
                 <div class="stat-card" style="border-top: 4px solid #28a745;">
                     <div class="stat-number"><?php echo $stats['published_works']; ?></div>
-                    <div class="stat-label">Published Works</div>
+                    <div class="stat-label">Опубликованных работ</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
                         <?php echo $stats['total_works']; ?> total • <?php echo $stats['total_works'] - $stats['published_works']; ?> drafts
                     </div>
@@ -130,7 +129,7 @@ ob_start();
 
                 <div class="stat-card" style="border-top: 4px solid #ffc107;">
                     <div class="stat-number"><?php echo $stats['today_messages']; ?></div>
-                    <div class="stat-label">Messages Today</div>
+                    <div class="stat-label">Сообщений сегодня</div>
                     <div style="margin-top: 10px; font-size: 14px; color: #aaa;">
                         Last 7 days: <?php echo array_sum(array_column($activity_data, 'messages')); ?>
                     </div>
@@ -138,23 +137,23 @@ ob_start();
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                <a href="messages.php" class="admin-btn btn-primary"> Manage Messages</a>
-                <a href="users.php" class="admin-btn btn-primary"> Manage Users</a>
-                <a href="works.php" class="admin-btn btn-primary"> Manage Works</a>
-                <a href="../contact.php" class="admin-btn btn-secondary" target="_blank"> View Contact Form</a>
+                <a href="messages.php" class="admin-btn btn-primary">Управление сообщениями</a>
+                <a href="users.php" class="admin-btn btn-primary">Управление пользователями</a>
+                <a href="works.php" class="admin-btn btn-primary">Управление работами</a>
+                <a href="../contact.php" class="admin-btn btn-secondary" target="_blank">Просмотр контактной формы</a>
             </div>
 
             <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <div class="card-title">Recent Messages</div>
-                        <a href="messages.php" class="card-link">View All →</a>
+                        <div class="card-title">Недвание сообщения</div>
+                        <a href="messages.php" class="card-link">Смотреть все →</a>
                     </div>
 
                     <?php if (empty($recent_messages)): ?>
                         <div style="text-align: center; padding: 30px; color: #888;">
                             <div style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;">📭</div>
-                            <p>No messages yet</p>
+                            <p>Нет сообщений</p>
                         </div>
                     <?php else: ?>
                         <?php foreach ($recent_messages as $msg): ?>
@@ -179,14 +178,14 @@ ob_start();
 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <div class="card-title">Recent Users</div>
-                        <a href="users.php" class="card-link">View All →</a>
+                        <div class="card-title">Недавние пользователи</div>
+                        <a href="users.php" class="card-link">Смотреть все →</a>
                     </div>
 
                     <?php if (empty($recent_users)): ?>
                         <div style="text-align: center; padding: 30px; color: #888;">
                             <div style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;">👤</div>
-                            <p>No users yet</p>
+                            <p>Нет пользователей</p>
                         </div>
                     <?php else: ?>
                         <?php foreach ($recent_users as $user): ?>
@@ -214,14 +213,14 @@ ob_start();
 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <div class="card-title">Recent Works</div>
-                        <a href="works.php" class="card-link">View All →</a>
+                        <div class="card-title">Недавние работы</div>
+                        <a href="works.php" class="card-link">Смотреть все →</a>
                     </div>
 
                     <?php if (empty($recent_works)): ?>
                         <div style="text-align: center; padding: 30px; color: #888;">
                             <div style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;">🎨</div>
-                            <p>No works yet</p>
+                            <p>Нету работ</p>
                         </div>
                     <?php else: ?>
                         <?php foreach ($recent_works as $work): ?>
@@ -249,19 +248,19 @@ ob_start();
             <div class="quick-stats">
                 <div class="quick-stat">
                     <div class="quick-number"><?php echo $db->fetch("SELECT COUNT(*) as count FROM messages WHERE DATE(created_at) = CURDATE()")['count']; ?></div>
-                    <div class="quick-label">Messages Today</div>
+                    <div class="quick-label">Сообщений сегодня</div>
                 </div>
                 <div class="quick-stat">
                     <div class="quick-number"><?php echo $db->fetch("SELECT COUNT(*) as count FROM users WHERE DATE(created_at) = CURDATE()")['count']; ?></div>
-                    <div class="quick-label">New Users Today</div>
+                    <div class="quick-label">Новые пользователи сегодня</div>
                 </div>
                 <div class="quick-stat">
                     <div class="quick-number"><?php echo round($stats['total_messages'] > 0 ? ($stats['unread_messages'] / $stats['total_messages'] * 100) : 0, 1); ?>%</div>
-                    <div class="quick-label">Unread Rate</div>
+                    <div class="quick-label">Рейтинг непрочитанных</div>
                 </div>
                 <div class="quick-stat">
                     <div class="quick-number"><?php echo round($stats['total_users'] > 0 ? ($stats['active_users'] / $stats['total_users'] * 100) : 0, 1); ?>%</div>
-                    <div class="quick-label">Active Users</div>
+                    <div class="quick-label">Активные пользователи</div>
                 </div>
             </div>
         </div>

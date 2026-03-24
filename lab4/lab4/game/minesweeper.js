@@ -506,11 +506,11 @@ class MinesweeperGame {
         if (this.gameState === 'paused') {
             this.gameState = 'playing';
             this.startTimer();
-            this.elements.pauseBtn.textContent = 'Pause';
+            this.elements.pauseBtn.textContent = 'Пауза';
         } else if (this.gameState === 'playing') {
             this.gameState = 'paused';
             this.stopTimer();
-            this.elements.pauseBtn.textContent = 'Resume';
+            this.elements.pauseBtn.textContent = 'Продолжить';
         }
 
         this.updateUI();

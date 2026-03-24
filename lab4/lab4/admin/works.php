@@ -96,10 +96,10 @@ ob_start();
     <main class="main">
         <div class="admin-container">
             <div class="admin-header">
-                <h1 style="color: #00ADB5;">Portfolio Works</h1>
+                <h1 style="color: #00ADB5;">Работы</h1>
                 <div>
-                    <a href="index.php" class="contact-btn">← Dashboard</a>
-                    <a href="logout.php" class="contact-btn" style="background-color: #ff6b6b;">Logout</a>
+                    <a href="index.php" class="contact-btn">← Дэшборд</a>
+                    <a href="logout.php" class="contact-btn" style="background-color: #ff6b6b;">Выход</a>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ ob_start();
 
             <!-- Таблица работ -->
             <div style="background: rgba(57,62,70,0.8); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">All Works (<?php echo count($works); ?>)</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;">Все работы (<?php echo count($works); ?>)</h2>
 
                 <table>
                     <thead>
@@ -165,13 +165,13 @@ ob_start();
                                 <div style="display: flex; gap: 10px;">
                                     <button onclick="editWork(<?php echo $work['id']; ?>)"
                                             style="background: rgba(0,173,181,0.2); color: #00ADB5; border: 1px solid #00ADB5; padding: 5px 15px; border-radius: 4px; cursor: pointer;">
-                                        Edit
+                                        Редактировать
                                     </button>
                                     <form method="POST" action="works.php" style="display: inline;" onsubmit="return confirm('Delete this work?');">
                                         <input type="hidden" name="work_id" value="<?php echo $work['id']; ?>">
                                         <button type="submit" name="delete_work" value="1"
                                                 style="background: rgba(255,107,107,0.2); color: #ff6b6b; border: 1px solid #ff6b6b; padding: 5px 15px; border-radius: 4px; cursor: pointer;">
-                                            Delete
+                                            Удалить
                                         </button>
                                     </form>
                                 </div>
@@ -184,7 +184,7 @@ ob_start();
 
             <!-- Форма добавления/редактирования работы -->
             <div style="background: rgba(57,62,70,0.8); padding: 25px; border-radius: 12px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;" id="form-title">Add New Work</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;" id="form-title">Добавить работу</h2>
                 <form method="POST" action="works.php" class="contact-form" id="work-form">
                     <input type="hidden" name="work_id" id="work_id" value="">
 
@@ -213,15 +213,15 @@ ob_start();
 
                     <div style="display: flex; gap: 15px; margin-top: 20px;">
                         <button type="submit" name="add_work" id="add-btn" class="send-btn">
-                            Add Work
+                            Добавить работу
                             <span class="btn-icon">+</span>
                         </button>
                         <button type="submit" name="update_work" id="update-btn" class="send-btn" style="display: none;">
-                            Update Work
+                            Редактировать
                             <span class="btn-icon">✓</span>
                         </button>
                         <button type="button" onclick="resetForm()" class="send-btn" style="background-color: #393E46;">
-                            Cancel
+                            Отмена
                         </button>
                     </div>
                 </form>
@@ -237,7 +237,7 @@ ob_start();
             const work = worksData.find(w => w.id == workId);
             if (!work) return;
 
-            document.getElementById('form-title').textContent = 'Edit Work';
+            document.getElementById('form-title').textContent = 'Редактировать работу';
             document.getElementById('work_id').value = work.id;
             document.getElementById('title').value = work.title;
             document.getElementById('description').value = work.description;
@@ -252,7 +252,7 @@ ob_start();
         }
 
         function resetForm() {
-            document.getElementById('form-title').textContent = 'Add New Work';
+            document.getElementById('form-title').textContent = 'Добавить работу';
             document.getElementById('work-form').reset();
             document.getElementById('work_id').value = '';
 

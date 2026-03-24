@@ -8,17 +8,17 @@ ob_start();
     <main class="main about-main">
         <div class="container">
             <div class="about-content">
-                <h1 class="about-title">About Me</h1>
+                <h1 class="about-title">Обо мне</h1>
                 <div class="about-text">
-                    <p>Hello! I'm a passionate Creative UI Designer with over 5 years of experience in creating beautiful, functional, and user-centered digital experiences. My journey in design started with a curiosity about how things work and evolved into a career dedicated to making technology more accessible and enjoyable for everyone.</p>
+                    <p>Здравствуйте! Я — увлеченный креативный UI-дизайнер с более чем 5-летним опытом создания красивых, функциональных и ориентированных на пользователя цифровых интерфейсов. Мой путь в дизайне начался с любопытства к тому, как всё устроено, и перерос в карьеру, посвященную тому, чтобы сделать технологии более доступными и приятными для всех.</p>
 
-                    <p>I specialize in creating intuitive user interfaces that not only look stunning but also solve real problems. My design philosophy is rooted in the belief that good design should be invisible — it should feel so natural that users don't even notice it's there.</p>
+                    <p>Я специализируюсь на создании интуитивно понятных пользовательских интерфейсов, которые не только потрясающе выглядят, но и решают реальные проблемы. Моя философия дизайна основана на убеждении, что хороший дизайн должен быть незаметным — он должен ощущаться настолько естественно, что пользователи даже не замечают его присутствия.</p>
 
 
-                    <p>When I'm not designing, you can find me exploring new design trends, contributing to open-source projects, or mentoring aspiring designers. I believe in continuous learning and staying updated with the latest industry developments.</p>
+                    <p>В свободное от дизайна время я изучаю новые тенденции в дизайне, участвую в проектах с открытым исходным кодом или наставляю начинающих дизайнеров. Я верю в непрерывное обучение и стремление быть в курсе последних отраслевых разработок.</p>
 
-                    <a href="contact.php" class="contact-btn">Get in Touch</a>
-                    <a href="works.php" class="works-btn">View My Works</a>
+                    <a href="contact.php" class="contact-btn">Свяжитесь со мной</a>
+                    <a href="works.php" class="works-btn">Мои работы</a>
                 </div>
             </div>
         </div>

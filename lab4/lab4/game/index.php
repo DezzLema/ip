@@ -76,27 +76,27 @@ ob_start();
         <div class="container">
 
             <h1 style="color: #00ADB5; text-align: center; margin-bottom: 30px;">
-                 Minesweeper
+                 Сапер
             </h1>
 
             <div class="quick-links">
                 <?php if ($isLoggedIn): ?>
-                    <a href="my_stats.php" class="quick-link"> My Statistics</a>
+                    <a href="my_stats.php" class="quick-link">Статистика</a>
                 <?php endif; ?>
             </div>
 
            
             <div class="difficulty-selector" style="margin: 30px 0;">
-                <h2 style="color: #eee; margin-bottom: 15px;">Select Difficulty:</h2>
+                <h2 style="color: #eee; margin-bottom: 15px;">Выбор сложности:</h2>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <button class="difficulty-btn active" data-difficulty="beginner">
-                        Легкий (9×9, 10 mines)
+                        Легкий
                     </button>
                     <button class="difficulty-btn" data-difficulty="intermediate">
-                        Средний (16×16, 40 mines)
+                        Средний
                     </button>
                     <button class="difficulty-btn" data-difficulty="expert">
-                        Сложный (30×16, 99 mines)
+                        Сложный
                     </button>
                 </div>
             </div>
@@ -106,7 +106,7 @@ ob_start();
                 <div class="game-header">
                     <div class="counter mines-counter">💣 <span id="mines-count">10</span></div>
                     <button id="reset-btn" class="game-btn">😊</button>
-                    <div class="counter timer">⏱️ <span id="game-timer">0</span>s</div>
+                    <div class="counter timer">⏱️ <span id="game-timer">0</span>с</div>
                 </div>
 
                 <div id="game-board" class="game-board">
@@ -115,29 +115,29 @@ ob_start();
 
                 <div class="controls" style="margin-top: 20px;">
                     <button id="hint-btn" class="game-btn"></button>
-                    <button id="pause-btn" class="game-btn">Pause</button>
-                    <button id="new-game-btn" class="game-btn">New Game</button>
+                    <button id="pause-btn" class="game-btn">Пауза</button>
+                    <button id="new-game-btn" class="game-btn">Новая игра</button>
                 </div>
             </div>
 
             <!-- стата -->
             <div id="current-game-stats" style="margin-top: 30px; padding: 20px; background: rgba(57,62,70,0.6); border-radius: 10px;">
-                <h3 style="color: #00ADB5; margin-bottom: 15px;">Current Game Stats</h3>
+                <h3 style="color: #00ADB5; margin-bottom: 15px;">Текущая игровая статистика</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
                     <div>
-                        <div style="color: #aaa; font-size: 14px;">Moves</div>
+                        <div style="color: #aaa; font-size: 14px;">Ходы</div>
                         <div id="moves-count" style="font-size: 24px; font-weight: bold;">0</div>
                     </div>
                     <div>
-                        <div style="color: #aaa; font-size: 14px;">Flags</div>
+                        <div style="color: #aaa; font-size: 14px;">Флаги</div>
                         <div id="flags-count" style="font-size: 24px; font-weight: bold;">0</div>
                     </div>
                     <div>
-                        <div style="color: #aaa; font-size: 14px;">Score</div>
+                        <div style="color: #aaa; font-size: 14px;">Очки</div>
                         <div id="current-score" style="font-size: 24px; font-weight: bold; color: #00ADB5;">0</div>
                     </div>
                     <div>
-                        <div style="color: #aaa; font-size: 14px;">Status</div>
+                        <div style="color: #aaa; font-size: 14px;">Статус</div>
                         <div id="game-status" style="font-size: 24px; font-weight: bold; color: #28a745;">Playing</div>
                     </div>
                 </div>

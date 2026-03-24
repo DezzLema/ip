@@ -41,15 +41,15 @@ ob_start();
 
 
             <div class="stat-card">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Overall Statistics</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;">Общая статистика</h2>
                 <div class="stats-grid">
                     <div>
                         <div class="stat-value"><?php echo $stats['overall']['total_games'] ?? 0; ?></div>
-                        <div class="stat-label">Total Games</div>
+                        <div class="stat-label">Количество игр</div>
                     </div>
                     <div>
                         <div class="stat-value"><?php echo $stats['overall']['games_won'] ?? 0; ?></div>
-                        <div class="stat-label">Games Won</div>
+                        <div class="stat-label">Побед</div>
                     </div>
                     <div>
                         <?php
@@ -58,11 +58,11 @@ ob_start();
                         $winRate = $totalGames > 0 ? round(($gamesWon / $totalGames) * 100, 1) : 0;
                         ?>
                         <div class="stat-value"><?php echo $winRate; ?>%</div>
-                        <div class="stat-label">Win Rate</div>
+                        <div class="stat-label">% побед</div>
                     </div>
                     <div>
                         <div class="stat-value"><?php echo $stats['overall']['best_score'] ?? 0; ?></div>
-                        <div class="stat-label">Best Score</div>
+                        <div class="stat-label">Лучший результат</div>
                     </div>
                     <div>
                         <?php
@@ -70,28 +70,28 @@ ob_start();
                         $timeFormatted = $bestTime ? floor($bestTime / 60) . ':' . sprintf('%02d', $bestTime % 60) : 'N/A';
                         ?>
                         <div class="stat-value"><?php echo $timeFormatted; ?></div>
-                        <div class="stat-label">Best Time</div>
+                        <div class="stat-label">Лучшее время</div>
                     </div>
                     <div>
                         <div class="stat-value"><?php echo round($stats['overall']['avg_time'] ?? 0, 1); ?>s</div>
-                        <div class="stat-label">Average Time</div>
+                        <div class="stat-label">Среднее время</div>
                     </div>
                 </div>
             </div>
 
             <!-- Статистика по сложностям -->
             <div class="stat-card" style="margin-top: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Statistics by Difficulty</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Статистика по сложности</h2>
 
                 <?php if (empty($stats['by_difficulty'])): ?>
                     <div class="empty-state">
                         <div class="empty-icon"></div>
-                        <p>No games played yet. Start playing to see your statistics!</p>
+                        <p>Игры ещё не сыграны. Начните играть, чтобы увидеть свою статистику.</p>
                         <a href="index.php" class="game-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">🎮 Play First Game</a>
                     </div>
                 <?php else: ?>
                     <div class="difficulty-tabs" id="difficultyTabs">
-                        <button class="tab-btn active" data-difficulty="all">All Difficulties</button>
+                        <button class="tab-btn active" data-difficulty="all">Всё сложности</button>
                         <?php foreach ($stats['by_difficulty'] as $diff): ?>
                             <button class="tab-btn" data-difficulty="<?php echo $diff['difficulty']; ?>">
                                 <?php echo ucfirst($diff['difficulty']); ?>
@@ -102,12 +102,12 @@ ob_start();
                     <table id="difficultyTable">
                         <thead>
                         <tr>
-                            <th>Difficulty</th>
-                            <th>Games</th>
-                            <th>Won</th>
-                            <th>Win Rate</th>
-                            <th>Best Time</th>
-                            <th>Best Score</th>
+                            <th>Сложность</th>
+                            <th>Игры</th>
+                            <th>Победы</th>
+                            <th>% побед</th>
+                            <th>Лучшее время</th>
+                            <th>Лучший результат</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -138,23 +138,23 @@ ob_start();
 
             <!-- Последние игры -->
             <div class="stat-card" style="margin-top: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;"> Recent Games</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;">Недавние игры</h2>
 
                 <?php if (empty($stats['recent_games'])): ?>
                     <div class="empty-state">
                         <div class="empty-icon"></div>
-                        <p>No games played yet.</p>
+                        <p>Нету игр.</p>
                     </div>
                 <?php else: ?>
                     <table>
                         <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Difficulty</th>
-                            <th>Time</th>
-                            <th>Moves</th>
-                            <th>Score</th>
-                            <th>Result</th>
+                            <th>Дата</th>
+                            <th>Сложность</th>
+                            <th>Время</th>
+                            <th>Количество ходов</th>
+                            <th>Очки</th>
+                            <th>Результат</th>
                         </tr>
                         </thead>
                         <tbody>

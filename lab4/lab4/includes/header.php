@@ -43,33 +43,33 @@ if ($is_in_game_folder) {
                 <li>
                     <a href="<?php echo $path_prefix; ?>index.php"
                             <?php echo ($current_page == 'index') ? 'class="active"' : ''; ?>>
-                        Home
+                        Главная
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo $path_prefix; ?>aboutme.php"
                             <?php echo ($current_page == 'aboutme') ? 'class="active"' : ''; ?>>
-                        About Me
+                        Обо мне
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo $path_prefix; ?>works.php"
                             <?php echo ($current_page == 'works') ? 'class="active"' : ''; ?>>
-                        My works
+                        Мои работы
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo $path_prefix; ?>game/index.php"
                             <?php echo ($current_page == 'game') ? 'class="active"' : ''; ?>>
-                        Minesweeper
+                        Сапер
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo $path_prefix; ?>contact.php"
                             <?php echo ($current_page == 'contact') ? 'class="active"' : ''; ?>>
-                        Contact
+                        Контакты
                     </a>
                 </li>
 
@@ -78,20 +78,20 @@ if ($is_in_game_folder) {
                         <li>
                             <a href="<?php echo $path_prefix; ?>admin/index.php"
                                style="color: #00ADB5; font-weight: bold;">
-                                Admin Panel
+                                Админ-панель
                             </a>
                         </li>
                     <?php endif; ?>
                     <li>
                         <a href="<?php echo $path_prefix; ?>logout.php" class="logout-btn">
-                            Logout (<?php echo htmlspecialchars($_SESSION['user_name']); ?>)
+                            Выход (<?php echo htmlspecialchars($_SESSION['user_name']); ?>)
                         </a>
                     </li>
                 <?php else: ?>
                     <li>
                         <a href="<?php echo $path_prefix; ?>login.php"
                                 <?php echo ($current_page == 'login') ? 'class="active"' : ''; ?>>
-                            Login
+                            Вход
                         </a>
                     </li>
                 <?php endif; ?>

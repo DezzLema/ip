@@ -8,11 +8,11 @@ ob_start();
     <main class="main">
         <div class="container">
             <div class="main-content">
-                <h1 class="ui_des">CREATIVE UI</h1>
-                <h1 class="designer">DESIGNER</h1>
+                <h1 class="ui_des">КРЕАТИВНЫЙ UI</h1>
+                <h1 class="designer">ДИЗАЙНЕР</h1>
                 <div class="buttons">
-                    <button class="hire" onclick="window.location.href='contact.php'">Hire me</button>
-                    <button class="cv" onclick="downloadCV()">Download CV</button>
+                    <button class="hire" onclick="window.location.href='contact.php'">Контакты</button>
+                    <button class="cv">Скачать резюме</button>
                 </div>
             </div>
             <div class="image-container">
@@ -22,12 +22,6 @@ ob_start();
     </main>
 
 <?php
-$custom_scripts = '
-<script>
-    function downloadCV() {
-        alert("CV download will start shortly.");
-    }
-</script>';
 $content = ob_get_clean();
 include 'includes/header.php';
 echo $content;

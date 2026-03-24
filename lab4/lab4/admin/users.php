@@ -227,10 +227,10 @@ ob_start();
     <main class="main">
         <div class="admin-container">
             <div class="admin-header">
-                <h1 style="color: #00ADB5;">User Management</h1>
+                <h1 style="color: #00ADB5;">Управление пользователями</h1>
                 <div>
-                    <a href="index.php" class="contact-btn">← Dashboard</a>
-                    <a href="logout.php" class="contact-btn" style="background-color: #ff6b6b;">Logout</a>
+                    <a href="index.php" class="contact-btn">← Дэшборд</a>
+                    <a href="logout.php" class="contact-btn" style="background-color: #ff6b6b;">Выход</a>
                 </div>
             </div>
 
@@ -313,11 +313,11 @@ ob_start();
                                         <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                                         <button type="submit" name="delete_user" value="1"
                                                 style="background: rgba(255,107,107,0.2); color: #ff6b6b; border: 1px solid #ff6b6b; padding: 5px 15px; border-radius: 4px; cursor: pointer;">
-                                            Delete
+                                            Удалить
                                         </button>
                                     </form>
                                 <?php else: ?>
-                                    <span style="color: #888; font-style: italic;">Current user</span>
+                                    <span style="color: #888; font-style: italic;">Текущий пользователь</span>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -330,31 +330,31 @@ ob_start();
             <div class="stats-grid">
                 <div class="stat-box" style="border-top: 3px solid #00ADB5;">
                     <div class="stat-number"><?php echo count($users); ?></div>
-                    <div class="stat-label">Total Users</div>
+                    <div class="stat-label">Всего пользователей</div>
                 </div>
                 <div class="stat-box" style="border-top: 3px solid #28a745;">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => $u['role'] == 'admin')); ?>
                     </div>
-                    <div class="stat-label">Admins</div>
+                    <div class="stat-label">Админы</div>
                 </div>
                 <div class="stat-box" style="border-top: 3px solid #ffc107;">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => $u['is_active'])); ?>
                     </div>
-                    <div class="stat-label">Active Users</div>
+                    <div class="stat-label">Активные пользователи</div>
                 </div>
                 <div class="stat-box" style="border-top: 3px solid #ff6b6b;">
                     <div class="stat-number">
                         <?php echo count(array_filter($users, fn($u) => !$u['is_active'])); ?>
                     </div>
-                    <div class="stat-label">Inactive Users</div>
+                    <div class="stat-label">Неактивные пользователи</div>
                 </div>
             </div>
 
             <!-- Форма добавления пользователя -->
             <div style="background: rgba(57,62,70,0.8); padding: 25px; border-radius: 12px; margin-top: 30px;">
-                <h2 style="color: #00ADB5; margin-bottom: 20px;">Add New User</h2>
+                <h2 style="color: #00ADB5; margin-bottom: 20px;">Добавить нового пользователя</h2>
                 <form method="POST" action="../register.php" class="contact-form">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
@@ -386,8 +386,8 @@ ob_start();
                         </div>
                     </div>
                     <button type="submit" class="send-btn" style="margin-top: 20px;">
-                        Add User
-                        <span class="btn-icon">+</span>
+                        Добавить
+                        <span class="btn-icon"></span>
                     </button>
                 </form>
             </div>

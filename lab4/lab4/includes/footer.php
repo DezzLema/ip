@@ -8,10 +8,10 @@
     <div class="container">
         <nav class="footer-nav">
             <ul class="footer_list">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="aboutme.php">About me</a></li>
-                <li><a href="works.php">My works</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="index.php">Главноая</a></li>
+                <li><a href="aboutme.php">Обо мне</a></li>
+                <li><a href="works.php">Мои работы</a></li>
+                <li><a href="contact.php">Контакты</a></li>
             </ul>
         </nav>
         <div class="social">

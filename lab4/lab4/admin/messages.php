@@ -305,30 +305,30 @@ ob_start();
         <div class="admin-container">
             <div class="admin-header">
                 <div>
-                    <h1 style="color: #00ADB5; margin-bottom: 10px;">Messages Management</h1>
+                    <h1 style="color: #00ADB5; margin-bottom: 10px;">Управление сообщениями</h1>
                     <p style="color: #aaa; font-size: 14px;">
-                        Total: <?php echo $total_count; ?> messages |
-                        Unread: <?php echo $db->fetch("SELECT COUNT(*) as count FROM messages WHERE is_read = 0")['count']; ?>
+                        Всего: <?php echo $total_count; ?> сообщений |
+                        Непрочитанных: <?php echo $db->fetch("SELECT COUNT(*) as count FROM messages WHERE is_read = 0")['count']; ?>
                     </p>
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div class="filters">
                         <a href="?filter=all<?php echo $search ? '&search=' . urlencode($search) : ''; ?>"
-                           class="filter-btn <?php echo $filter === 'all' ? 'active' : ''; ?>">All</a>
+                           class="filter-btn <?php echo $filter === 'all' ? 'active' : ''; ?>">Всё</a>
                         <a href="?filter=unread<?php echo $search ? '&search=' . urlencode($search) : ''; ?>"
-                           class="filter-btn <?php echo $filter === 'unread' ? 'active' : ''; ?>">Unread</a>
+                           class="filter-btn <?php echo $filter === 'unread' ? 'active' : ''; ?>">Непрочитанные</a>
                         <a href="?filter=read<?php echo $search ? '&search=' . urlencode($search) : ''; ?>"
-                           class="filter-btn <?php echo $filter === 'read' ? 'active' : ''; ?>">Read</a>
+                           class="filter-btn <?php echo $filter === 'read' ? 'active' : ''; ?>">Прочитанные</a>
                     </div>
 
                     <form method="GET" class="search-box">
                         <input type="text" name="search" class="search-input"
                                placeholder="Search messages..."
                                value="<?php echo htmlspecialchars($search); ?>">
-                        <button type="submit" class="action-btn btn-primary">Search</button>
+                        <button type="submit" class="action-btn btn-primary">Поиск</button>
                         <?php if ($search): ?>
-                            <a href="messages.php" class="action-btn btn-secondary">Clear</a>
+                            <a href="messages.php" class="action-btn btn-secondary">Очистить</a>
                         <?php endif; ?>
                     </form>
                 </div>
@@ -338,26 +338,26 @@ ob_start();
                 <form method="POST" style="display: inline;">
                     <button type="submit" name="mark_all_read" class="action-btn btn-primary"
                             onclick="return confirm('Mark all messages as read?')">
-                        📨 Mark All as Read
+                        Пометить всё как прочитанные
                     </button>
                 </form>
 
                 <form method="POST" style="display: inline;">
                     <button type="submit" name="delete_all_read" class="action-btn btn-danger"
                             onclick="return confirm('Delete all read messages? This action cannot be undone.')">
-                        🗑️ Delete All Read
+                        Удалить все прочитанные
                     </button>
                 </form>
 
-                <a href="index.php" class="action-btn btn-secondary">← Dashboard</a>
-                <a href="logout.php" class="action-btn btn-secondary" style="background-color: #ff6b6b;">Logout</a>
+                <a href="index.php" class="action-btn btn-secondary">← Дэшборд</a>
+                <a href="logout.php" class="action-btn btn-secondary" style="background-color: #ff6b6b;">Выход</a>
             </div>
 
             <div style="margin-top: 30px;">
                 <?php if (empty($messages)): ?>
                     <div class="empty-state">
                         <div class="empty-state-icon">📭</div>
-                        <h3>No messages found</h3>
+                        <h3>Нету сообщений</h3>
                         <p><?php echo $search ? 'Try a different search term' : 'No messages have been sent yet.'; ?></p>
                     </div>
                 <?php else: ?>
@@ -377,7 +377,7 @@ ob_start();
                                             <?php echo $msg['is_read'] ? 'READ' : 'NEW'; ?>
                                         </span>
                                             <?php if ($msg['username']): ?>
-                                                <span class="badge badge-user">User: <?php echo htmlspecialchars($msg['username']); ?></span>
+                                                <span class="badge badge-user">Пользователь: <?php echo htmlspecialchars($msg['username']); ?></span>
                                             <?php endif; ?>
                                         </div>
                                         <div style="color: #aaa; font-size: 14px;">
@@ -404,7 +404,7 @@ ob_start();
                             <div class="message-content" id="content-<?php echo $msg['id']; ?>">
                                 <div style="padding: 20px 0;">
                                     <div style="margin-bottom: 15px;">
-                                        <strong style="color: #00ADB5;">Message:</strong>
+                                        <strong style="color: #00ADB5;">Сообщение:</strong>
                                         <p style="color: #eee; line-height: 1.6; margin-top: 10px; white-space: pre-wrap;">
                                             <?php echo nl2br(htmlspecialchars($msg['message'])); ?>
                                         </p>
@@ -430,7 +430,7 @@ ob_start();
                                         <div style="margin-top: 20px;">
                                             <a href="mark_read.php?id=<?php echo $msg['id']; ?>"
                                                class="action-btn btn-primary" style="padding: 8px 15px; font-size: 14px;">
-                                                Mark as Read
+                                                Пометить как прочитанное
                                             </a>
                                         </div>
                                     <?php endif; ?>
@@ -443,7 +443,7 @@ ob_start();
                         <div class="pagination">
                             <?php if ($page_num > 1): ?>
                                 <a href="?page=<?php echo $page_num - 1; ?><?php echo $search ? '&search=' . urlencode($search) : ''; ?><?php echo $filter !== 'all' ? '&filter=' . $filter : ''; ?>"
-                                   class="page-link">← Previous</a>
+                                   class="page-link">← Назад</a>
                             <?php endif; ?>
 
                             <?php for ($i = 1; $i <= min(5, $total_pages); $i++): ?>
@@ -463,7 +463,7 @@ ob_start();
 
                             <?php if ($page_num < $total_pages): ?>
                                 <a href="?page=<?php echo $page_num + 1; ?><?php echo $search ? '&search=' . urlencode($search) : ''; ?><?php echo $filter !== 'all' ? '&filter=' . $filter : ''; ?>"
-                                   class="page-link">Next →</a>
+                                   class="page-link">Далее →</a>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
