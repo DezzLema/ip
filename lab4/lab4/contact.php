@@ -28,31 +28,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // серверная валидация
     // валидация имени
     if (empty($name)) {
-        $errors['name'] = 'Name is required';
+        $errors['name'] = 'Введите имя';
     } elseif (strlen($name) < 2) {
-        $errors['name'] = 'Name must be at least 2 characters';
+        $errors['name'] = 'Слишком короткое имя';
     } elseif (strlen($name) > 100) {
-        $errors['name'] = 'Name must not exceed 100 characters';
+        $errors['name'] = 'Слишком длинное имя';
     } elseif (!preg_match('/^[a-zA-Z\s\-\.\']+$/', $name)) {
-        $errors['name'] = 'Name can only contain letters, spaces, hyphens, dots and apostrophes';
+        $errors['name'] = 'Имя содержит недопустимые символы';
     }
 
     // валидация email
     if (empty($email)) {
-        $errors['email'] = 'Email is required';
+        $errors['email'] = 'Введите email';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'Invalid email format';
+        $errors['email'] = 'неверный формат email';
     } elseif (strlen($email) > 100) {
-        $errors['email'] = 'Email must not exceed 100 characters';
+        $errors['email'] = 'слишком длинный email';
     }
 
     // Валидация сообщения
     if (empty($message)) {
-        $errors['message'] = 'Message is required';
+        $errors['message'] = 'Введите сообщение';
     } elseif (strlen($message) < 10) {
-        $errors['message'] = 'Message must be at least 10 characters';
+        $errors['message'] = 'Слишком короткое сообщение';
     } elseif (strlen($message) > 2000) {
-        $errors['message'] = 'Message must not exceed 2000 characters';
+        $errors['message'] = 'Слишком длинное сообщение';
     }
 
     // защита от спама
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     foreach ($spam_words as $word) {
         if (strpos($message_lower, $word) !== false) {
-            $errors['message'] = 'Message contains suspicious content';
+            $errors['message'] = 'Сообщение содержит неправильный контент';
             break;
         }
     }
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['last_submit_time'])) {
         $time_diff = time() - $_SESSION['last_submit_time'];
         if ($time_diff < 10) { // 10 секунд между отправками
-            $errors['general'] = 'Please wait a moment before sending another message';
+            $errors['general'] = 'Подождите';
         }
     }
 

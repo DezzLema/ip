@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (empty($username) || empty($password)) {
-        $error = 'Please fill in all fields';
+        $error = 'Заполните все поля';
     } else {
         $db = Database::getInstance();
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             exit;
         } else {
-            $error = 'Invalid username/email or password';
+            $error = 'Неверный username/email или пароль';
         }
     }
 }
@@ -77,7 +77,7 @@ ob_start();
                                 type="text"
                                 id="username"
                                 name="username"
-                                class="form-input <?php echo isset($errors['username']) ? 'error' : ''; ?>"
+                                class="form-input <?php echo isset($errors['username']) ? 'error    ' : ''; ?>"
                                 placeholder="username или email"
                                 required
                                 value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>"

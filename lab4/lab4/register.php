@@ -19,22 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Валидация username
     if (empty($username)) {
-        $errors['username'] = 'Username is required';
+        $errors['username'] = 'Имя пользователя обязательно';
     } elseif (strlen($username) < 3) {
-        $errors['username'] = 'Username must be at least 3 characters';
+        $errors['username'] = 'Имя пользователя должно состоять как минимум из 3 символов.';
     } elseif (strlen($username) > 50) {
-        $errors['username'] = 'Username must not exceed 50 characters';
+        $errors['username'] = 'Имя пользователя не должно превышать 50 символов.';
     } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
-        $errors['username'] = 'Username can only contain letters, numbers and underscores';
+        $errors['username'] = 'Имя пользователя может содержать только буквы, цифры и символы подчеркивания.';
     }
 
     // Валидация email
     if (empty($email)) {
-        $errors['email'] = 'Email is required';
+        $errors['email'] = 'Требуется указать адрес электронной почты.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'Invalid email format';
+        $errors['email'] = 'Неверный формат email';
     } elseif (strlen($email) > 100) {
-        $errors['email'] = 'Email must not exceed 100 characters';
+        $errors['email'] = 'В email не должно быть более 100 символов.';
     }
 
     // Валидация пароля

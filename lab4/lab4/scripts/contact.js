@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // блокируем отправку
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
-                alert("Submission blocked - suspicious activity detected");
+                alert("защита от ботов");
                 return false;
             }, { once: true });
         }

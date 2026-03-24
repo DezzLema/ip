@@ -1,16 +1,18 @@
 <?php
 
-
+// включение отладки
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+//устанавливаем заголовки для json ответа
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 
+// обработка preflight запроса
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
@@ -21,6 +23,7 @@ require_once '../../includes/db_connection.php';
 require_once '../../includes/game_functions.php';
 
 
+// Запускаем сессию для проверки авторизации
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -31,6 +34,7 @@ file_put_contents('debug.log', "Request method: " . $_SERVER['REQUEST_METHOD'] .
 file_put_contents('debug.log', "Content type: " . $_SERVER['CONTENT_TYPE'] . "\n", FILE_APPEND);
 
 
+// Проверяем метод запроса
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     file_put_contents('debug.log', "Wrong method\n", FILE_APPEND);
     http_response_code(405);
@@ -38,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-
+// Получаем и декодируем JSON из тела запроса
 $input = json_decode(file_get_contents('php://input'), true);
 
 
@@ -53,6 +57,7 @@ if (!$input) {
 }
 
 
+// Проверяем наличие обязательных полей
 $requiredFields = ['userId', 'difficulty', 'time', 'result'];
 $missingFields = [];
 foreach ($requiredFields as $field) {
@@ -72,7 +77,7 @@ if (!empty($missingFields)) {
     exit;
 }
 
-
+// Проверяем, что пользователь авторизован
 $sessionUserId = $_SESSION['user_id'] ?? null;
 $requestUserId = $input['userId'];
 
@@ -92,7 +97,7 @@ if ($sessionUserId != $requestUserId) {
 }
 
 try {
-
+    // Подготавливаем данные для сохранения
     $gameData = [
         'difficulty' => $input['difficulty'],
         'time' => (int)$input['time'],
@@ -103,11 +108,12 @@ try {
 
     file_put_contents('debug.log', "Game data prepared: " . json_encode($gameData) . "\n", FILE_APPEND);
 
-
+    // Сохраняем игровую сессию
     $result = saveGameSession($input['userId'], $gameData);
 
     file_put_contents('debug.log', "Game saved, result: " . json_encode($result) . "\n", FILE_APPEND);
 
+    // Возвращаем успешный ответ
     echo json_encode([
         'success' => true,
         'session_id' => $result['session_id'],

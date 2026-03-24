@@ -296,11 +296,11 @@ class MinesweeperGame {
         this.elements.resetBtn.classList.add(isWin ? 'game-won' : 'game-over');
 
         if (isWin) {
-            this.elements.gameStatus.textContent = 'You Win!';
+            this.elements.gameStatus.textContent = 'Победа!';
             this.elements.gameStatus.style.color = '#28a745';
             this.saveGameResult();
         } else {
-            this.elements.gameStatus.textContent = 'Game Over';
+            this.elements.gameStatus.textContent = 'Поражение';
             this.elements.gameStatus.style.color = '#ff6b6b';
         }
 

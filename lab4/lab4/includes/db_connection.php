@@ -7,12 +7,13 @@ class Database {
 
     private function __construct() {
         try {
+            // созданем объект подключения
             $this->connection = new PDO(
                 "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
                 DB_USER,
                 DB_PASS
             );
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // заствялем pdo выбрасывать исключения при ошибках
         } catch(PDOException $e) {
             die("Connection failed: " . $e->getMessage());
         }
