@@ -99,7 +99,7 @@ ob_start();
     <main class="main contact-main">
         <div class="container">
             <div class="contact-content">
-                <h1 class="contact-title">Register</h1>
+                <h1 class="contact-title">Регистрация</h1>
 
                 <?php if ($error): ?>
                     <div class="error-message" style="background-color: rgba(255,107,107,0.1); color: #ff6b6b; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(255,107,107,0.3);">
@@ -121,7 +121,7 @@ ob_start();
                                 id="username"
                                 name="username"
                                 class="form-input <?php echo isset($errors['username']) ? 'error' : ''; ?>"
-                                placeholder="Choose a username (3-50 characters)"
+                                placeholder="Выберете username"
                                 required
                                 value="<?php echo htmlspecialchars($username ?? ''); ?>"
                         >
@@ -139,7 +139,7 @@ ob_start();
                                 id="email"
                                 name="email"
                                 class="form-input <?php echo isset($errors['email']) ? 'error' : ''; ?>"
-                                placeholder="Enter your email"
+                                placeholder="email"
                                 required
                                 value="<?php echo htmlspecialchars($email ?? ''); ?>"
                         >
@@ -151,13 +151,13 @@ ob_start();
                     </div>
 
                     <div class="form-group">
-                        <label for="full_name" class="form-label">Full Name</label>
+                        <label for="full_name" class="form-label">Имя</label>
                         <input
                                 type="text"
                                 id="full_name"
                                 name="full_name"
                                 class="form-input <?php echo isset($errors['full_name']) ? 'error' : ''; ?>"
-                                placeholder="Enter your full name"
+                                placeholder="Имя"
                                 value="<?php echo htmlspecialchars($full_name ?? ''); ?>"
                         >
                         <?php if (isset($errors['full_name'])): ?>
@@ -168,13 +168,13 @@ ob_start();
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="form-label">Password *</label>
+                        <label for="password" class="form-label">Пароль *</label>
                         <input
                                 type="password"
                                 id="password"
                                 name="password"
                                 class="form-input <?php echo isset($errors['password']) ? 'error' : ''; ?>"
-                                placeholder="At least 8 characters with uppercase, lowercase and number"
+                                placeholder="Пароль"
                                 required
                         >
                         <?php if (isset($errors['password'])): ?>
@@ -183,18 +183,18 @@ ob_start();
                             </div>
                         <?php endif; ?>
                         <div class="password-requirements" style="color: #aaa; font-size: 13px; margin-top: 5px;">
-                            Must contain: uppercase, lowercase, number, min 8 chars
+                            Пароль должен содердать: заглавные буквы, строчные буквы, цифры, 8 символов
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="confirm_password" class="form-label">Confirm Password *</label>
+                        <label for="confirm_password" class="form-label">Подтверждение пароля *</label>
                         <input
                                 type="password"
                                 id="confirm_password"
                                 name="confirm_password"
                                 class="form-input <?php echo isset($errors['confirm_password']) ? 'error' : ''; ?>"
-                                placeholder="Repeat your password"
+                                placeholder="Повторите пароль"
                                 required
                         >
                         <?php if (isset($errors['confirm_password'])): ?>
@@ -205,12 +205,12 @@ ob_start();
                     </div>
 
                     <button type="submit" class="send-btn">
-                        Register
+                        Регистрация
                         <span class="btn-icon">→</span>
                     </button>
 
                     <p style="text-align: center; margin-top: 20px;">
-                        Already have an account? <a href="login.php">Login here</a>
+                        Уже есть аккаунт? <a href="login.php">Вход</a>
                     </p>
                 </form>
             </div>

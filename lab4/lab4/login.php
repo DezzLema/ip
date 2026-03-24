@@ -56,7 +56,7 @@ ob_start();
     <main class="main contact-main">
         <div class="container">
             <div class="contact-content">
-                <h1 class="contact-title">Login</h1>
+                <h1 class="contact-title">Вход</h1>
 
                 <?php if ($message): ?>
                     <div class="info-message" style="background-color: rgba(0,173,181,0.1); color: #00ADB5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
@@ -72,13 +72,13 @@ ob_start();
 
                 <form class="contact-form" method="POST" action="login.php" id="login-form" novalidate>
                     <div class="form-group">
-                        <label for="username" class="form-label">Username or Email</label>
+                        <label for="username" class="form-label">Username или Email</label>
                         <input
                                 type="text"
                                 id="username"
                                 name="username"
                                 class="form-input <?php echo isset($errors['username']) ? 'error' : ''; ?>"
-                                placeholder="Enter your username or email"
+                                placeholder="username или email"
                                 required
                                 value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>"
                         >
@@ -90,13 +90,13 @@ ob_start();
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Пароль</label>
                         <input
                                 type="password"
                                 id="password"
                                 name="password"
                                 class="form-input <?php echo isset($errors['password']) ? 'error' : ''; ?>"
-                                placeholder="Enter your password"
+                                placeholder="Пароль"
                                 required
                         >
                         <?php if (isset($errors['password'])): ?>
@@ -107,16 +107,12 @@ ob_start();
                     </div>
 
                     <button type="submit" class="send-btn">
-                        Login
+                        Вход
                         <span class="btn-icon">→</span>
                     </button>
 
                     <p style="text-align: center; margin-top: 20px;">
-                        Don`t have an account? <a href="register.php">Register here</a>
-                    </p>
-
-                    <p style="text-align: center; margin-top: 10px;">
-                        <small>Demo: username: <strong>demo</strong>, password: <strong>password</strong></small>
+                        Нету аккаунта? <a href="register.php">Регистрация</a>
                     </p>
                 </form>
             </div>

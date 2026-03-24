@@ -31,7 +31,7 @@ ob_start();
                 <div style="font-size: 80px; margin-bottom: 20px; color: #00ADB5; opacity: 0.5;">🎨</div>
                 <h2 style="color: #eee; margin-bottom: 15px;">No works yet</h2>
                 <p style="color: #aaa; max-width: 500px; margin: 0 auto;">
-                    Our portfolio is currently being updated. Check back soon!
+                    Нету работ
                 </p>
             </div>
         <?php else: ?>
