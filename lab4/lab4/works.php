@@ -8,7 +8,7 @@ $db = Database::getInstance();
 if (!isset($_SESSION['user_id'])) {
     // Если пользователь не авторизован, перенаправляем на страницу логина
     $_SESSION['redirect_url'] = 'works.php';
-    header('Location: login.php?message=Please login to view the gallery');
+    header('Location: login.php?message=Войдите чтобы открыть галерею');
     exit;
 }
 
@@ -28,8 +28,8 @@ ob_start();
     <div class="pure-css-gallery" id="gallery-container">
         <?php if (empty($works)): ?>
             <div style="text-align: center; padding: 100px 20px;">
-                <div style="font-size: 80px; margin-bottom: 20px; color: #00ADB5; opacity: 0.5;">🎨</div>
-                <h2 style="color: #eee; margin-bottom: 15px;">No works yet</h2>
+                <div style="font-size: 80px; margin-bottom: 20px; color: #00ADB5; opacity: 0.5;"></div>
+                <h2 style="color: #eee; margin-bottom: 15px;">Нету работ</h2>
                 <p style="color: #aaa; max-width: 500px; margin: 0 auto;">
                     Нету работ
                 </p>

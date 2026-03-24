@@ -39,29 +39,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Валидация пароля
     if (empty($password)) {
-        $errors['password'] = 'Password is required';
+        $errors['password'] = 'Введите пароль';
     } elseif (strlen($password) < 8) {
-        $errors['password'] = 'Password must be at least 8 characters';
+        $errors['password'] = 'Пароль слишком короткий';
     } elseif (strlen($password) > 100) {
-        $errors['password'] = 'Password must not exceed 100 characters';
+        $errors['password'] = 'Пароль слишком длинный';
     } elseif (!preg_match('/[A-Z]/', $password)) {
-        $errors['password'] = 'Password must contain at least one uppercase letter';
+        $errors['password'] = 'Пароль не содержит заглавных букв';
     } elseif (!preg_match('/[a-z]/', $password)) {
-        $errors['password'] = 'Password must contain at least one lowercase letter';
+        $errors['password'] = 'Пароль не содержит строчных букв';
     } elseif (!preg_match('/[0-9]/', $password)) {
-        $errors['password'] = 'Password must contain at least one number';
+        $errors['password'] = 'Пароль не содержит цифр';
     }
 
     // Валидация подтверждения пароля
     if (empty($confirm_password)) {
-        $errors['confirm_password'] = 'Please confirm your password';
+        $errors['confirm_password'] = 'Подтвердите пароль';
     } elseif ($password !== $confirm_password) {
-        $errors['confirm_password'] = 'Passwords do not match';
+        $errors['confirm_password'] = 'Пароль не совпадает';
     }
 
     // Валидация полного имени
     if (!empty($full_name) && strlen($full_name) > 100) {
-        $errors['full_name'] = 'Full name must not exceed 100 characters';
+        $errors['full_name'] = 'Слишком длинное имя';
     }
 
     // Если нет ошибок валидации
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($existing) {
-            $error = 'Username or email already exists';
+            $error = 'Username или email уже существует';
         } else {
             // Хеширование пароля
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     [$username, $email, $hashed_password, $full_name]
             );
 
-            $success = 'Registration successful! You can now <a href="login.php">login</a>.';
+            $success = 'Регистрация прошла успешно! Теперь вы можете <a href="login.php">войти</a>.';
 
             // Очищаем поля формы
             $username = $email = $full_name = '';

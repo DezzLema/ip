@@ -40,13 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
     username.addEventListener("input", function() {
         const value = username.value.trim();
         if (!value) {
-            showError(username, "Username is required");
+            showError(username, "Введите username");
         } else if (value.length < 3) {
-            showError(username, "Username must be at least 3 characters");
+            showError(username, "Username слишком короткий");
         } else if (value.length > 50) {
-            showError(username, "Username must not exceed 50 characters");
+            showError(username, "Username слишком длинный");
         } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
-            showError(username, "Only letters, numbers and underscores allowed");
+            showError(username, "Не используйте запрещенные символы");
         } else {
             clearError(username);
         }
@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
         if (!value) {
-            showError(email, "Email is required");
+            showError(email, "Введите почту");
         } else if (!emailRegex.test(value)) {
-            showError(email, "Please enter a valid email");
+            showError(email, "Пожалуйста, введите действительный адрес электронной почты.");
         } else if (value.length > 100) {
-            showError(email, "Email must not exceed 100 characters");
+            showError(email, "В почте не должно быть более 100 символов.");
         } else {
             clearError(email);
         }
@@ -73,17 +73,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const value = password.value;
         
         if (!value) {
-            showError(password, "Password is required");
+            showError(password, "Введите пароль");
         } else if (value.length < 8) {
-            showError(password, "Password must be at least 8 characters");
+            showError(password, "Пароль должен состоять как минимум из 8 символов.");
         } else if (value.length > 100) {
-            showError(password, "Password must not exceed 100 characters");
+            showError(password, "Пароль не должен превышать 100 символов.");
         } else if (!/[A-Z]/.test(value)) {
-            showError(password, "Must contain at least one uppercase letter");
+            showError(password, "Должно содержать как минимум одну заглавную букву.");
         } else if (!/[a-z]/.test(value)) {
-            showError(password, "Must contain at least one lowercase letter");
+            showError(password, "Должно содержать как минимум одну строчную букву.");
         } else if (!/[0-9]/.test(value)) {
-            showError(password, "Must contain at least one number");
+            showError(password, "Должно содержать как минимум одно число.");
         } else {
             clearError(password);
         }
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Проверка подтверждения пароля, если оно уже введено
         if (confirmPassword.value) {
             if (value !== confirmPassword.value) {
-                showError(confirmPassword, "Passwords do not match");
+                showError(confirmPassword, "Пароль не совпадает");
             } else {
                 clearError(confirmPassword);
             }
@@ -101,9 +101,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Валидация подтверждения пароля
     confirmPassword.addEventListener("input", function() {
         if (!confirmPassword.value) {
-            showError(confirmPassword, "Please confirm your password");
+            showError(confirmPassword, "Подтвердите пароль");
         } else if (password.value !== confirmPassword.value) {
-            showError(confirmPassword, "Passwords do not match");
+            showError(confirmPassword, "Пароль не совпадает");
         } else {
             clearError(confirmPassword);
         }
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fullName.addEventListener("input", function() {
         const value = fullName.value.trim();
         if (value.length > 100) {
-            showError(fullName, "Full name must not exceed 100 characters");
+            showError(fullName, "Полное имя не должно превышать 100 символов.");
         } else {
             clearError(fullName);
         }
@@ -139,22 +139,22 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Дополнительные проверки для пустых полей
         if (!username.value.trim()) {
-            showError(username, "Username is required");
+            showError(username, "Username обязателен");
             hasErrors = true;
         }
         
         if (!email.value.trim()) {
-            showError(email, "Email is required");
+            showError(email, "Email обязателен");
             hasErrors = true;
         }
         
         if (!password.value) {
-            showError(password, "Password is required");
+            showError(password, "Password обязателен");
             hasErrors = true;
         }
         
         if (!confirmPassword.value) {
-            showError(confirmPassword, "Please confirm your password");
+            showError(confirmPassword, "Подтвердите пароль");
             hasErrors = true;
         }
         
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Показываем индикатор загрузки
         const submitBtn = form.querySelector(".send-btn");
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = 'Registering... <span class="btn-icon">---</span>';
+        submitBtn.innerHTML = 'Регистрация... <span class="btn-icon">---</span>';
         submitBtn.disabled = true;
         
         // Автоматическое восстановление кнопки через 10 секунд (на случай ошибки)
