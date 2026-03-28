@@ -5,7 +5,6 @@ require_once 'includes/db_connection.php';
 $page = 'login';
 $page_title = 'Login';
 $error = '';
-
 // Проверяем, есть ли сообщение о необходимости логина
 $message = $_GET['message'] ?? '';
 

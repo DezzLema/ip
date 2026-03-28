@@ -343,6 +343,7 @@ class MinesweeperGame {
         console.log('Game data to save:', gameData);
 
         try {
+            // ajax запрос через fetch api
             const response = await fetch(gameConfig.apiBaseUrl + 'save_game.php', {
                 method: 'POST',
                 headers: {

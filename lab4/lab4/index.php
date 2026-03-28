@@ -4,7 +4,6 @@ $page = 'index';
 $page_title = 'Creative UI Designer';
 ob_start();
 ?>
-
     <main class="main">
         <div class="container">
             <div class="main-content">

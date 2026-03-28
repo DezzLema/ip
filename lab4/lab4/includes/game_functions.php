@@ -37,9 +37,6 @@ function saveGameSession($userId, $gameData) {
         $sessionId = $db->lastInsertId();
         error_log("Game session saved with ID: $sessionId");
 
-        // Обновляем таблицу лидеров
-        updateLeaderboard($userId, $difficulty, $totalTime, $score, $gameState);
-
         return ['session_id' => $sessionId, 'score' => $score];
 
     } catch (Exception $e) {
@@ -48,66 +45,6 @@ function saveGameSession($userId, $gameData) {
     }
 }
 
-
-
-function updateLeaderboard($userId, $difficulty, $time, $score, $result) {
-    $db = Database::getInstance();
-
-    // Проверяем, есть ли уже запись
-    $existing = $db->fetch(
-        "SELECT * FROM game_leaderboard 
-        WHERE user_id = ? AND difficulty = ?",
-        [$userId, $difficulty]
-    );
-
-    $totalGames = 1;
-    $gamesWon = ($result === 'won') ? 1 : 0;
-    $bestTime = $time;
-    $bestScore = $score;
-
-    if ($existing) {
-        $totalGames = $existing['total_games'] + 1;
-        $gamesWon = $existing['games_won'] + (($result === 'won') ? 1 : 0);
-        $bestTime = ($time < $existing['best_time'] || $existing['best_time'] === null) ? $time : $existing['best_time'];
-        $bestScore = ($score > $existing['best_score']) ? $score : $existing['best_score'];
-
-        $db->query(
-            "UPDATE game_leaderboard 
-            SET best_time = ?, best_score = ?, total_games = ?, 
-                games_won = ?, win_rate = ROUND((? / ?) * 100, 2),
-                last_played = NOW(), updated_at = NOW()
-            WHERE user_id = ? AND difficulty = ?",
-            [
-                $bestTime,
-                $bestScore,
-                $totalGames,
-                $gamesWon,
-                $gamesWon,
-                $totalGames,
-                $userId,
-                $difficulty
-            ]
-        );
-    } else {
-        $winRate = ($gamesWon / $totalGames) * 100;
-
-        $db->query(
-            "INSERT INTO game_leaderboard 
-            (user_id, difficulty, best_time, best_score, 
-             total_games, games_won, win_rate, last_played) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, NOW())",
-            [
-                $userId,
-                $difficulty,
-                $bestTime,
-                $bestScore,
-                $totalGames,
-                $gamesWon,
-                $winRate
-            ]
-        );
-    }
-}
 
 
 function calculateScore($time, $difficulty, $moves, $result) {
@@ -180,61 +117,5 @@ function getUserGameStats($userId) {
         'by_difficulty' => $byDifficulty,
         'recent_games' => $recentGames
     ];
-}
-
-
-function getLeaderboard($difficulty = 'beginner', $limit = 20) {
-    $db = Database::getInstance();
-
-    return $db->fetchAll(
-        "SELECT gl.*, u.username, u.full_name
-        FROM game_leaderboard gl
-        JOIN users u ON gl.user_id = u.id
-        WHERE gl.difficulty = ?
-        ORDER BY gl.best_score DESC, gl.best_time ASC
-        LIMIT ?",
-        [$difficulty, $limit]
-    );
-}
-
-
-function getGlobalGameStats() {
-    $db = Database::getInstance();
-
-    return $db->fetchAll(
-        "SELECT 
-            DATE(created_at) as date,
-            COUNT(*) as total_games,
-            SUM(CASE WHEN game_state = 'won' THEN 1 ELSE 0 END) as games_won,
-            AVG(total_time) as avg_time,
-            SUM(score) as total_score
-        FROM game_sessions 
-        WHERE created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-        GROUP BY DATE(created_at)
-        ORDER BY date DESC"
-    );
-}
-
-
-function getTopPlayers($limit = 10) {
-    $db = Database::getInstance();
-
-    return $db->fetchAll(
-        "SELECT 
-            u.id,
-            u.username,
-            u.full_name,
-            COUNT(gs.id) as total_games,
-            SUM(CASE WHEN gs.game_state = 'won' THEN 1 ELSE 0 END) as games_won,
-            SUM(gs.score) as total_score,
-            MAX(gs.score) as best_score
-        FROM users u
-        LEFT JOIN game_sessions gs ON u.id = gs.user_id
-        GROUP BY u.id
-        HAVING total_games > 0
-        ORDER BY total_score DESC
-        LIMIT ?",
-        [$limit]
-    );
 }
 ?>
