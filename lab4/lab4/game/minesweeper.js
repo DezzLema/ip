@@ -302,6 +302,8 @@ class MinesweeperGame {
         } else {
             this.elements.gameStatus.textContent = 'Поражение';
             this.elements.gameStatus.style.color = '#ff6b6b';
+            this.gameState = 'lost';
+            this.saveGameResult();
         }
 
         this.showGameOverModal(isWin);
@@ -333,7 +335,7 @@ class MinesweeperGame {
         formData.append('time', this.elapsedTime);
         formData.append('moves', this.movesCount);
         formData.append('flags', this.flagsCount);
-        formData.append('result', 'won');
+        formData.append('result', this.gameState);
 
         // Отправляем POST запрос
         fetch('save_game.php', {
