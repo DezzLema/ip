@@ -320,54 +320,36 @@ class MinesweeperGame {
         }
     }
 
-    //сохранение результата
-    async saveGameResult() {
-        console.log('Saving game result...');
-        console.log('Game config:', gameConfig);
-        console.log('isLoggedIn:', gameConfig.isLoggedIn);
-        console.log('userId:', gameConfig.userId);
-
+    saveGameResult() {
         if (!gameConfig.isLoggedIn) {
             console.log('User not logged in, score not saved');
             return;
         }
 
-        const gameData = {
-            difficulty: this.config.difficulty,
-            time: this.elapsedTime,
-            moves: this.movesCount,
-            flags: this.flagsCount,
-            result: 'won'
-        };
+        // Создаем FormData для POST запроса
+        const formData = new FormData();
+        formData.append('userId', gameConfig.userId);
+        formData.append('difficulty', this.config.difficulty);
+        formData.append('time', this.elapsedTime);
+        formData.append('moves', this.movesCount);
+        formData.append('flags', this.flagsCount);
+        formData.append('result', 'won');
 
-        console.log('Game data to save:', gameData);
-
-        try {
-            // ajax запрос через fetch api
-            const response = await fetch(gameConfig.apiBaseUrl + 'save_game.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...gameData,
-                    userId: gameConfig.userId
-                })
-            });
-
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
-
-            const result = await response.json();
-            console.log('Server response:', result);
-
-            if (result.success && result.score) {
-                this.elements.currentScore.textContent = result.score;
+        // Отправляем POST запрос
+        fetch('save_game.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.score) {
+                this.elements.currentScore.textContent = data.score;
+                console.log('Game saved! Score:', data.score);
             }
-        } catch (error) {
+        })
+        .catch(error => {
             console.error('Error saving game:', error);
-            console.error('Error details:', error.message);
-        }
+        });
     }
 
     //модальное окно в конце игры
